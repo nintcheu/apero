@@ -1,14 +1,21 @@
-import {formData} from './forms';
+import { formData } from './forms';
 
-const form = document.querySelector('form')!;
+document.addEventListener('DOMContentLoaded', (event) => {
 
-if(form){
-    
-    form.addEventListener('submit', (e) => {
+    const form = document.querySelector('form')!;
 
-        e.preventDefault();
-        const data = formData(form);
-        console.log(data);
-    
-    });
-}
+    if (form) {
+
+        form.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+            const data = formData(form);
+            console.log(data);
+
+        });
+    }
+
+});
+
+
+
