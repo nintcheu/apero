@@ -90,4 +90,8 @@ npm i webpack-dev-server -D
     "webpack-dev-server": "^3.10.3"
   }
 
-  ##
+  ## installer les packages firebase 
+
+  '''
+  npm install -g firebase-tools
+  '''
