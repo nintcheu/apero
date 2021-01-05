@@ -16,31 +16,41 @@
 
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Logo</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro!</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="index.html">About</a></li>
-        <li><a href="index.html">Contact</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="#!">Contact</a></li>
+        <li><a href="#!">Guide</a></li>
+
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Guide</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
   <div class="section no-pad-bot" id="index-banner">
+
+
+
+    <div class="container">
+      <div class="carousel">
+        <a class="carousel-item" href="#one!"><img src="https://dummyimage.com/250"></a>
+        <a class="carousel-item" href="#two!"><img src="https://dummyimage.com/250"></a>
+        <a class="carousel-item" href="#three!"><img src="https://dummyimage.com/250"></a>
+        <a class="carousel-item" href="#four!"><img src="https://dummyimage.com/250"></a>
+        <a class="carousel-item" href="#five!"><img src="https://dummyimage.com/250"></a>
+      </div>
+    </div>
+
+
+
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Apéro</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Publier votre offre de service</h5>
-      </div>
-
+        <a href="#!" id="download-button" class="btn-large waves-effect waves-light orange">Consulter les plats</a>
       <br><br>
-
     </div>
   </div>
 
@@ -49,103 +59,62 @@
     <div class="section">
 
 
+      <!--   Icon Section   -->
       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="dish" type="text" class="validate">
-              <label for="dish">Intitulé du plat</label>
-            </div>
+
+
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Elargir votre réseau de clients</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework
+              that incorporates components and animations that provide more feedback to users. Additionally, a single
+              underlying responsive system across all platforms allow for a more unified user experience.</p>
           </div>
+        </div> 
 
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Protégez-vous en cas de litiges clients</h5>
 
-          <div class="file-field input-field">
-            <div class="btn">
-              <span>3 Photos du plat</span>
-              <input type="file" multiple>
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="Upload one or more files">
-            </div>
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our
+              custom components. Additionally, we refined animations and transitions to provide a smoother experience
+              for developers.</p>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix tooltipped"
-                data-tooltip="Contenu du plat" data-position="top">mode_edit</i>
 
-              <!-- Customizable input  -->
-              <div class="chips">
-                <input id="dish_ingrediant" class="custom-class">
-              </div>
 
-            </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Rester concentré sur votre savoir-faire</h5>
 
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users
+              get started. We are also always open to feedback and can answer any questions a user may have about
+              Materialize.</p>
           </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="company" type="text" class="validate">
-              <label for="company">Entreprise ou Personne</label>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" class="datepicker" id="service_date_start" class="validate">
-              <label for="service_date_start">Début du service</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="service_hour_start" class="timepicker validate">
-              <label for="service_hour_start">Heure</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" class="datepicker" id="service_date_end" class="validate">
-              <label for="service_date_end">Fin du service</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="service_hour_end" class="timepicker validate">
-              <label for="service_hour_end">Heure</label>
-            </div>
-          </div>
+        </div>
       </div>
 
-      <div class="row">
-        <button class="btn waves-effect waves-light modal-trigger" type="submit" name="action"
-          data-target="modal1">Enregister l'offre de service
-        </button>
-      </div>
-      </form>
-      <!-- end form publication dish -->
 
 
-
-
-
-
-
-
+      <!-- end container div-->
     </div>
-
-
-
-    <!-- end container div-->
-  </div>
-  <br><br>
+    <br><br>
   </div>
 
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
-            full time job. Any amount would help support and continue development on this project and is greatly
-            appreciated.</p>
+          <h5 class="white-text">Apéro!</h5>
+          <p class="grey-text text-lighten-4">Cette application est une plateforme ouverte pour les passionnés de "bons plats faits maison!". 
+            Si vous disposez d'un savoir-faire culinaire, vous pouvez commercialiser votre compétence afin d'avoir un revenu passif occasionnel.
+             Pour cela, il vous suffit de publier un plat sur notre plateforme avec votre honoraire de service.</p>
 
 
         </div>
@@ -171,7 +140,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        <!-- Made by <a class="orange-text text-lighten-3" href="#!">Materialize</a>-->
       </div>
     </div>
   </footer>
@@ -183,13 +152,14 @@
   <!-- Fixed button-actions like GMAIL app -->
 
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
+    <a class="btn-floating btn-large light-blue">
 
       <i class="large material-icons">menu</i>
 
     </a>
     <ul>
-      <li><a class="btn-floating red" href="#!"><i class="large material-icons">mode_edit</i></a></li>
+      <li><a class="btn-floating red modal-trigger pulse" href="#!" data-target="modal-publishing-form"><i
+            class="large material-icons">add_circle</i></a></li>
       <li><a class="btn-floating yellow darken-1 modal-trigger" href="#!" data-target="modal-account"><i
             class="large material-icons">person</i></a></li>
       <li><a class="btn-floating green" href="#!"><i class="material-icons">mail</i></a></li>
@@ -248,6 +218,80 @@
   </div>
 
 
+  <!-- modal publishing form offer-->
+
+  <div id="modal-publishing-form" class="modal modal-fixed-footer">
+
+    <div class="modal-content">
+      <h4>Publier un plat</h4>
+
+      <!-- start form publication -->
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="dish" type="text" class="validate">
+            <label for="dish">Intitulé du plat</label>
+          </div>
+        </div>
+
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>3 Photos du plat</span>
+            <input type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix tooltipped" data-tooltip="Saisir un aliment puis appuyer sur la touche entrée au clavier" data-position="right">info_outline</i>
+
+            <!-- Customizable input  -->
+            <div class="chips">
+              <input id="dish_ingrediant" class="custom-class">
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="company" type="text" class="validate">
+            <label for="company">Entreprise ou Personne</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker" id="service_date_start" class="validate">
+            <label for="service_date_start">Début du service</label>
+          </div>
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker" id="service_date_end" class="validate">
+            <label for="service_date_end">Fin du service</label>
+          </div>
+        </div>
+      </form>
+    </div> <!-- end modal content-->
+    <!-- end form publication dish -->
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
+      <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
+        data-target="modal1">publier le plat
+      </button>
+    </div><!-- end modal footer-->
+
+
+  </div>
+
   <!-- firebase -->
 
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -294,10 +338,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
       var elems_datepicker = document.querySelectorAll('.datepicker');
-      var instances_datepicker = M.Datepicker.init(elems_datepicker, { autoClose: false });
-
-      var elems_timepicker = document.querySelectorAll('.timepicker');
-      var instances_timepicker = M.Timepicker.init(elems_timepicker, { autoClose: false });
+      var instances_datepicker = M.Datepicker.init(elems_datepicker, { autoClose: false, container: "p" });
 
       var elems_chips = document.querySelectorAll('.chips');
 
@@ -354,8 +395,32 @@
 
       });
 
+      // -- Modal publishing form -- 
+
+      var publishing_form_modal = document.getElementById('modal-publishing-form');
+      var publishing_form_modal_options = {};
+      publishing_form_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
+      publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
+      publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
+      publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
+      M.Modal.init(publishing_form_modal, publishing_form_modal_options);
+      var publishing_form_modal_links = elements = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
+      publishing_form_modal_links.forEach((href) => {
+        href.addEventListener("click", (e) => {
+
+          //console.log(e);
+          console.log(e.target.firstChild.data);
+
+        });
+
+      });
 
 
+      // -- Caroussel --
+
+      var elems_carousel = document.querySelectorAll('.carousel');
+      var elems_carousel_options = {};
+      M.Carousel.init(elems_carousel, elems_carousel_options);
 
 
       var elems_fixed_btn = document.querySelectorAll('.fixed-action-btn');
@@ -382,9 +447,7 @@
           // List of OAuth providers supported.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          firebase.auth.GithubAuthProvider.PROVIDER_ID
-        ],
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID        ],
         // Other config options...
       });
 

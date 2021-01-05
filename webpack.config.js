@@ -4,7 +4,7 @@ module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.join(__dirname, 'dist/public'),
         compress: false,
         port: 8080
       },
@@ -22,9 +22,9 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
     output: {
-        publicPath: 'public/js',
+        publicPath: 'dist/public/js',
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public/js')
+        path: path.resolve(__dirname, 'dist/public/js')
     },
 
 }
