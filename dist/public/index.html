@@ -35,12 +35,16 @@
 
 
     <div class="container">
+      <div class="row center">
+
+      <h4>Commandes vedettes</h4>
       <div class="carousel">
         <a class="carousel-item" href="#one!"><img src="https://dummyimage.com/250"></a>
         <a class="carousel-item" href="#two!"><img src="https://dummyimage.com/250"></a>
         <a class="carousel-item" href="#three!"><img src="https://dummyimage.com/250"></a>
         <a class="carousel-item" href="#four!"><img src="https://dummyimage.com/250"></a>
         <a class="carousel-item" href="#five!"><img src="https://dummyimage.com/250"></a>
+      </div>
       </div>
     </div>
 
@@ -58,11 +62,8 @@
   <div class="container">
     <div class="section">
 
-
       <!--   Icon Section   -->
       <div class="row">
-
-
 
         <div class="col s12 m4">
           <div class="icon-block">
@@ -113,8 +114,8 @@
         <div class="col l6 s12">
           <h5 class="white-text">Apéro!</h5>
           <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits maison!". 
-            Si vous disposez d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s, alors pourquoi ne pas commercialiser votre compétence culinaires de façon occasionnel et ainsi générer un revenu passif ?
-             Pensez-y! Pour se faire, il vous suffit de publier votre meilleur plat sur notre plateforme avec votre honoraire de service.</p>
+            Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s? Avez-vous déjà envisagé de commercialiser votre talent culinaire de façon occasionnel et ainsi générer un revenu passif? Pensez-y!!!
+            <br>Tout ce dont vous avez besoin, c'est publier votre meilleur plat sur notre plateforme avec votre honoraire de service, puis d'accepter ou pas les ordres de commande à votre rythme, sans pression.</p>
 
 
         </div>
@@ -287,6 +288,19 @@
             <label for="service_date_end">Fin du service</label>
           </div>
         </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="service_zipcode" class="validate">
+            <label for="service_zipcode">Code postal</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input type="text" id="service_city" class="validate">
+            <label for="service_city">Ville</label>
+          </div>
+        </div>
       </form>
       <br>
     </div> <!-- end modal content-->
@@ -456,8 +470,8 @@
         signInOptions: [
           // List of OAuth providers supported.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.TwitterAuthProvider.PROVIDER_ID        ],
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        ],
         // Other config options...
       });
 
