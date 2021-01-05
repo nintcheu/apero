@@ -67,7 +67,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Elargir votre réseau de clients</h5>
+            <h5 class="center">Elargissez votre réseau de clients</h5>
 
             <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework
               that incorporates components and animations that provide more feedback to users. Additionally, a single
@@ -91,7 +91,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Rester concentré sur votre savoir-faire</h5>
+            <h5 class="center">Concentrez-vous sur votre savoir-faire</h5>
 
             <p class="light">We have provided detailed documentation as well as specific code examples to help new users
               get started. We are also always open to feedback and can answer any questions a user may have about
@@ -112,9 +112,9 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Apéro!</h5>
-          <p class="grey-text text-lighten-4">Cette application est une plateforme ouverte pour les passionnés de "bons plats faits maison!". 
-            Si vous disposez d'un savoir-faire culinaire, vous pouvez commercialiser votre compétence afin d'avoir un revenu passif occasionnel.
-             Pour cela, il vous suffit de publier un plat sur notre plateforme avec votre honoraire de service.</p>
+          <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits maison!". 
+            Si vous disposez d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s, alors pourquoi ne pas commercialiser votre compétence culinaires de façon occasionnel et ainsi générer un revenu passif ?
+             Pensez-y! Pour se faire, il vous suffit de publier votre meilleur plat sur notre plateforme avec votre honoraire de service.</p>
 
 
         </div>
@@ -163,7 +163,6 @@
       <li><a class="btn-floating yellow darken-1 modal-trigger" href="#!" data-target="modal-account"><i
             class="large material-icons">person</i></a></li>
       <li><a class="btn-floating green" href="#!"><i class="material-icons">mail</i></a></li>
-      <li><a class="btn-floating green" href="#!"><i class="material-icons">history</i></a></li>
       <li><a class="btn-floating blue" href="#!"><i class="material-icons">search</i></a></li>
     </ul>
   </div>
@@ -234,6 +233,16 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field inline">
+              <input id="dish_price" type="number" class="validate" min="5" max="100">
+              <label for="dish_price">Prix (dollars canadien)</label>
+              <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 5 CAD - max. 100 CAD</span>
+            </div>
+          </div>
+        </div>
+
 
         <div class="file-field input-field">
           <div class="btn">
@@ -279,6 +288,7 @@
           </div>
         </div>
       </form>
+      <br>
     </div> <!-- end modal content-->
     <!-- end form publication dish -->
 
