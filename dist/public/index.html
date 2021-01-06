@@ -17,23 +17,83 @@
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro!</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#!">Contact</a></li>
-        <li><a href="#!">Guide</a></li>
+      
 
+      <!-- FULL SCREEN : LOGGED OUT -->
+      <ul class="right hide-on-med-and-down">
+        <!-- 
+          <li><a href="#!">Contact</a></li>
+        <li><a href="#!">Guide</a></li>
+        -->
       </ul>
 
+      <!-- IF LOGGED OUT -->
+
+      
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Guide</a></li>
+        <li><div id="firebaseui-auth-container"></div></li>
+        <li><div class="user-view">
+           <div  class="background">
+             <!-- <img src="https://dummyimage.com/1000x750"> -->
+            <img src="https://materializecss.com/images/office.jpg">
+          </div>
+        
+
+          <a href="#user"><img class="circle" src="https://dummyimage.com/150x150"></a> 
+
+          <a href="#name"><span class="white-text name"></span></a>
+          <a href="#email"><span class="white-text email"></span></a>
+        </div>
+      </li>
+      <li><a href="#!"><i class="material-icons">call_made</i>Connexion</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">menu</a></li>
+        <li><a class="waves-effect" href="#!">Contact</a></li>
+        <li><a class="waves-effect" href="#!">Guide</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    
+
+
+
+    <!-- IF LOGGED IN -->
+    <!--
+    <ul id="nav-mobile" class="sidenav">
+      <li><div class="user-view">
+        <div class="background">
+
+          <img src="https://materializecss.com/images/office.jpg">
+          <img src="https://dummyimage.com/1000x750">
+
+        </div>
+
+        <a href="#user"><img class="circle" src="https://materializecss.com/images/yuna.jpg"></a>
+        <a href="#user"><img class="circle" src="https://dummyimage.com/150x150"></a> 
+
+
+        <a href="#name"><span class="white-text name">Brice Miller</span></a>
+        <a href="#email"><span class="white-text email">b.miller@gmail.com</span></a>
+      </div></li>
+      <li><a href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">menu</a></li>
+      <li><a class="waves-effect" href="#!">Contact</a></li>
+      <li><a class="waves-effect" href="#!">Guide</a></li>
+    </ul>
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  -->
+
+
     </div>
   </nav>
+
+
+  
+
+
+
+
   <div class="section no-pad-bot" id="index-banner">
-
-
-
     <div class="container">
       <div class="row center">
 
@@ -161,9 +221,11 @@
     <ul>
       <li><a class="btn-floating red modal-trigger pulse" href="#!" data-target="modal-publishing-form"><i
             class="large material-icons">add_circle</i></a></li>
-      <li><a class="btn-floating yellow darken-1 modal-trigger" href="#!" data-target="modal-account"><i
-            class="large material-icons">person</i></a></li>
-      <li><a class="btn-floating green" href="#!"><i class="material-icons">mail</i></a></li>
+      <!--<li><a class="btn-floating yellow darken-1 modal-trigger" href="#!" data-target="modal-account"><i class="large material-icons">person</i></a></li>-->
+
+      <li><a class="btn-floating yellow darken-1 sidenav-trigger"  href="#!" data-target="nav-mobile"><i class="large material-icons">person</i></a></li>
+
+      <li><a class="btn-floating green" href="#!"><i class="material-icons">notifications</i></a></li>
       <li><a class="btn-floating blue" href="#!"><i class="material-icons">search</i></a></li>
     </ul>
   </div>
@@ -205,19 +267,7 @@
     </div>
   </div>
 
-  <!-- modal account -->
-
-  <div id="modal-account" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Account - Sign in</h4>
-      <div id="firebaseui-auth-container"> </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
-    </div>
-  </div>
-
-
+ 
   <!-- modal publishing form offer-->
 
   <div id="modal-publishing-form" class="modal modal-fixed-footer">
@@ -399,25 +449,6 @@
 
       });
 
-
-      //-- modal-account management --
-      var account_modal = document.getElementById('modal-account');
-      var account_modal_options = {};
-      account_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
-      account_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
-      account_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
-      account_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-      M.Modal.init(account_modal, account_modal_options);
-      var modal_account_links = elements = document.querySelectorAll('id.modal-account .modal-footer a');
-      modal_account_links.forEach((href) => {
-        href.addEventListener("click", (e) => {
-
-          //console.log(e);
-          console.log(e.target.firstChild.data);
-
-        });
-
-      });
 
       // -- Modal publishing form -- 
 
