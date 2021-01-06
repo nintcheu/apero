@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>Starter Template - Materialize</title>
+  <title>Apéro - Commercialiser votre savoir-faire culinaire</title>
 
   <!-- CSS  -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
@@ -17,16 +17,6 @@
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro!</a>
-      
-
-      <!-- FULL SCREEN : LOGGED OUT -->
-      <ul class="right hide-on-med-and-down">
-        <!-- 
-          <li><a href="#!">Contact</a></li>
-        <li><a href="#!">Guide</a></li>
-        -->
-      </ul>
-
       <!-- IF LOGGED OUT -->
 
       
@@ -48,8 +38,10 @@
       <li><a href="#!"><i class="material-icons">call_made</i>Connexion</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">menu</a></li>
-        <li><a class="waves-effect" href="#!">Contact</a></li>
+        <li><a class="waves-effect" href="#!">A propos</a></li>
         <li><a class="waves-effect" href="#!">Guide</a></li>
+        <li><a href="#!"><i class="material-icons">feedback</i>feedback</a></li>
+
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     
@@ -174,8 +166,8 @@
         <div class="col l6 s12">
           <h5 class="white-text">Apéro!</h5>
           <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits maison!". 
-            Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s? Avez-vous déjà envisagé de commercialiser votre talent culinaire de façon occasionnel et ainsi générer un revenu passif? Pensez-y!!!
-            <br>Tout ce dont vous avez besoin, c'est publier votre meilleur plat sur notre plateforme avec votre honoraire de service, puis d'accepter ou pas les ordres de commande à votre rythme, sans pression.</p>
+            Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br/> Avez-vous déjà envisagé de commercialiser ce talent de façon occasionnel et ainsi générer un revenu passif?<br/>
+            Tout ce dont vous avez besoin, c'est "publier votre meilleur plat sur notre plateforme" avec votre honoraire de service, puis d'accepter à votre convenance les ordres de commande.</p>
 
 
         </div>
@@ -225,7 +217,7 @@
 
       <li><a class="btn-floating yellow darken-1 sidenav-trigger"  href="#!" data-target="nav-mobile"><i class="large material-icons">person</i></a></li>
 
-      <li><a class="btn-floating green" href="#!"><i class="material-icons">notifications</i></a></li>
+      <li><a class="btn-floating green modal-trigger" href="#notifications-modal"><i class="material-icons">notifications</i></a></li>
       <li><a class="btn-floating blue" href="#!"><i class="material-icons">search</i></a></li>
     </ul>
   </div>
@@ -268,7 +260,7 @@
   </div>
 
  
-  <!-- modal publishing form offer-->
+  <!-- Modal publishing form offer-->
 
   <div id="modal-publishing-form" class="modal modal-fixed-footer">
 
@@ -365,6 +357,54 @@
 
 
   </div>
+
+
+
+<!-- DEBUT : modal-notification -->
+<div id="notifications-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Notifications des commandes</h4>
+
+    <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+      <span class="title">Ben Laurier</span>
+      <p>
+         Une fondue au chocolat
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <img src="https://dummyimage.com/150x150" alt="" class="circle">
+      <span class="title">Céline Dion</span>
+      <p>
+         Un pain aux bananes
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <img src="https://dummyimage.com/150x150" alt="" class="circle">
+      <span class="title">Georges Laraq </span>
+      <p>
+         Un riz
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <img src="https://dummyimage.com/150x150" alt="" class="circle">
+      <span class="title">Ali Awal</span>
+      <p>
+         Un plantain
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+    </li>
+  </ul>
+
+  </div>
+</div>
+<!-- FIN: modal-notifications-->
+
+
 
   <!-- firebase -->
 
