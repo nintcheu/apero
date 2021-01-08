@@ -21,13 +21,15 @@
 
 
       <ul id="nav-mobile" class="sidenav">
-        <li>
           <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
 
-          <div id="firebaseui-auth-container"></div>
+          <div id="firebaseui-auth-container">
+            <div class="progress" style="display:none">
+              <div class="indeterminate"></div>
+          </div>
+        </div>
 
-        </li>
         <li>
           <div class="user-view">
             <div class="background" id="profileBackground" style="display:none;">
@@ -35,15 +37,16 @@
               <img src="https://materializecss.com/images/office.jpg">
             </div>
 
-            <a href="#user"></a><img style="display:none" id="profilePhoto" class="circle" width="150" height="150"
-              src="https://dummyimage.com/150x150"></a>
+            <a href="#user" id="profilePhoto">
+              <img style="display:none" class="circle" width="150" height="150" src="https://dummyimage.com/150x150">
+            </a>
 
             <a href="#name"><span class="white-text name" id="profileDisplayName"></span></a>
             <a href="#email"><span class="white-text email" id="profileEmail"></span></a>
           </div>
         </li>
         <li>
-          <a href="#!" id="disconnectLink" style="display:none"><i
+          <a href="#!" id="disconnectLink" style="display:none" class="modal-trigger" data-target="modal-disconnect"><i
               class="material-icons">power_settings_new</i>Logout</a>
         </li>
 
@@ -247,7 +250,7 @@
 
     <!-- Modal Structure -->
 
-    <div id="modal1" class="modal modal-fixed-footer">
+    <div id="modal-dish-publishing" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>Conditions d'utilisation</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -376,13 +379,28 @@
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
         <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
-          data-target="modal1">publier le plat
+          data-target="modal-dish-publishing">publier le plat
         </button>
       </div><!-- end modal footer-->
 
 
     </div>
 
+
+
+    <!-- MODALE DISCONNECT : DEBUT -->
+    <div id="modal-disconnect" class="modal">
+      <div class="modal-content">
+        <h4>Déconnexion</h4>
+        <p>Voulez-vous nous quitter ?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">NON</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OUI</a>
+
+      </div>
+    </div>
+    <!-- MODALE DISCONNECT : FIN -->
 
 
     <!-- DEBUT : modal-notification -->
@@ -497,26 +515,7 @@
         var instances_tooltipped = M.Tooltip.init(elems_tooltipped, options_tooltipped);
 
 
-        //-- modal management --
-        var elems_modal = document.querySelectorAll('.modal');
-        var options_modal = {};
 
-
-        options_modal.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
-        options_modal.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
-        options_modal.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
-        options_modal.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-        var instances_modal = M.Modal.init(elems_modal, options_modal);
-        var modal_elems_links = elements = document.querySelectorAll('.modal .modal-footer a');
-        modal_elems_links.forEach((href) => {
-          href.addEventListener("click", (e) => {
-            console.log("_accessToken: " + _profileAccessToken);
-            //console.log(e);
-            console.log(e.target.firstChild.data);
-
-          });
-
-        });
 
 
         // -- Modal publishing form -- 
@@ -556,9 +555,9 @@
         elems_fixed_btn_actions.forEach((href) => {
           href.addEventListener("click", (e) => {
 
-            console.log("_accessToken: " + _profileAccessToken);
+            console.log("_profileAccessToken: " + _profileAccessToken);
             //console.log(e);
-            console.log(e.target.firstChild.data);
+            console.log("btnClicked: " + e.target.firstChild.data);
 
           });
 
@@ -566,6 +565,7 @@
 
 
         // firebase auth 
+
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
@@ -586,20 +586,16 @@
                   _profileEmail = authResult.user.email;
 
                   //console.log(authResult.user.photoURL);
-                  _profilePhoto = authResult.user.photoURL;
+                  _profilePhotoUrl = authResult.user.photoURL;
 
                   //console.log(authResult.user.metadata.lastSignInTime);
 
                   document.querySelector('#profileBackground').setAttribute("style", "display:block");
-                  document.querySelector('#profilePhoto').setAttribute("src", authResult.user.photoURL);
-                  document.querySelector('#profilePhoto').setAttribute("style", "dislay:block");
-                  document.querySelector('#profileDisplayName').appendChild(document.createTextNode(authResult.user.displayName));
-                  document.querySelector('#profileEmail').appendChild(document.createTextNode(authResult.user.email));
+                  document.querySelector('#profilePhoto img').setAttribute('src', _profilePhotoUrl);
+                  document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
+                  document.querySelector('#profileDisplayName').appendChild(document.createTextNode(_profileDisplayName));
+                  document.querySelector('#profileEmail').appendChild(document.createTextNode(_profileEmail));
                   document.querySelector('#disconnectLink').setAttribute("style", "display:block");
-
-
-
-
 
 
 
@@ -654,6 +650,79 @@
 
 
 
+
+
+
+
+
+
+        //MODAL CONTROLLER MANAGER : START
+
+        var elems_modal = document.querySelectorAll('.modal');
+        var options_modal = {};
+
+
+        options_modal.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
+        options_modal.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
+        options_modal.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
+        options_modal.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
+        var instances_modal = M.Modal.init(elems_modal, options_modal);
+        var modal_elems_links = elements = document.querySelectorAll('.modal .modal-footer a');
+        modal_elems_links.forEach((href) => {
+
+          let modalID = href.parentNode.parentNode.getAttribute("id");
+
+          href.addEventListener("click", (e) => {
+            console.log("_accessToken: " + _profileAccessToken);
+            let valueBtnClicked = e.target.firstChild.data;
+            console.log("valueBtnClicked: " + valueBtnClicked);
+
+
+            if (modalID == "modal-disconnect" && valueBtnClicked == "OUI") {
+
+              console.log(modalID);
+
+              firebase.auth().signOut().then((e) => {
+
+                console.log("sign-out" + e);
+
+                _profileAccessToken = null;
+                _profilePhotoUrl = null;
+                _profileDisplayName = null;
+
+                document.querySelector('#profileBackground').remove();
+                document.querySelector('#profilePhoto').remove();
+                document.querySelector('#disconnectLink').remove();
+                document.querySelector('#profileDisplayName').remove();
+                document.querySelector('#profileEmail').remove();              
+                
+                document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:block");
+
+                setTimeout(()=> {                
+                  ui.start('#firebaseui-auth-container', uiConfig);
+                  document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:none");
+
+                }, 2000);
+
+                setTimeout(()=> {                
+                localStorage.clear();
+                  location.href = '/';
+                }, 3000);
+
+
+              }).catch((error) => {
+                // An error happened.
+                console.log("sign-out-error" + error);
+              });
+
+            }
+
+
+
+          });
+
+        });
+        //MODAL CONTROLLER MANAGER : END
 
 
 
