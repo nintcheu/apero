@@ -21,12 +21,12 @@
 
 
       <ul id="nav-mobile" class="sidenav">
-          <!-- The surrounding HTML is left untouched by FirebaseUI.
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
 
-          <div id="firebaseui-auth-container">
-            <div class="progress" style="display:none">
-              <div class="indeterminate"></div>
+        <div id="firebaseui-auth-container">
+          <div class="progress" style="display:none">
+            <div class="indeterminate"></div>
           </div>
         </div>
 
@@ -98,10 +98,15 @@
 
 
 
-
+  <div class="container">
+    <div class="row">
+      <div id="search-result"></div>
+    </div>
+  </div>
 
 
   <div class="section no-pad-bot" id="index-banner">
+
     <div class="container">
       <div class="row center">
 
@@ -243,14 +248,15 @@
 
         <li><a class="btn-floating green modal-trigger" href="#notifications-modal"><i
               class="material-icons">notifications</i></a></li>
-        <li><a class="btn-floating blue" href="#!"><i class="material-icons">search</i></a></li>
+        <li><a class="btn-floating blue modal-trigger" href="#!" data-target="modal-search"><i
+              class="material-icons">search</i></a></li>
       </ul>
     </div>
 
 
     <!-- Modal Structure -->
 
-    <div id="modal-dish-publishing" class="modal modal-fixed-footer">
+    <div id="modal-conditions-agreement" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>Conditions d'utilisation</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -288,7 +294,10 @@
     <!-- Modal publishing form offer-->
 
     <div id="modal-publishing-form" class="modal modal-fixed-footer">
-
+      <div class="modal-header">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
+            class="large material-icons">cancel</i></a>
+      </div>
       <div class="modal-content">
         <h4>Publier un plat</h4>
 
@@ -379,7 +388,7 @@
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
         <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
-          data-target="modal-dish-publishing">publier le plat
+          data-target="modal-conditions-agreement">publier le plat
         </button>
       </div><!-- end modal footer-->
 
@@ -389,7 +398,11 @@
 
 
     <!-- MODALE DISCONNECT : DEBUT -->
-    <div id="modal-disconnect" class="modal">
+    <div id="modal-disconnect" class="modal modal-fixed-footer">
+      <div class="modal-header">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
+            class="large material-icons">cancel</i></a>
+      </div>
       <div class="modal-content">
         <h4>Déconnexion</h4>
         <p>Voulez-vous nous quitter ?</p>
@@ -448,287 +461,394 @@
     <!-- FIN: modal-notifications-->
 
 
+    <!-- SEARCH MODAL : START -->
 
-    <!-- firebase -->
+    <div id="modal-search" class="modal modal-fixed-footer">
+      <div class="modal-header">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
+            class="large material-icons">cancel</i></a>
+      </div>
+      <div class="modal-content">
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Mot(s) clé(s)</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">SEARCH</a>
+      </div>
+    </div>
 
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- SEARCH MODAL : END -->
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+  </div>
+
+
+  <!-- firebase -->
+
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
-
-
-    <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyDeTPGZJmgE6pJ_IYLOOdPLaE5YlRBjUeo",
-        authDomain: "apero-68e78.firebaseapp.com",
-        projectId: "apero-68e78",
-        storageBucket: "apero-68e78.appspot.com",
-        messagingSenderId: "94438058503",
-        appId: "1:94438058503:web:457015fa059625ce6318a2",
-        measurementId: "G-J7CTL6B73M"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    </script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
 
 
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/wNumb.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/bundle.js"></script>
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function () {
-        let _profileAccessToken = null;
-        let _profileDisplayName = null;
-        let _profileEmail = null;
-        let _profilePhotoUrl = null;
-
-        var elems_datepicker = document.querySelectorAll('.datepicker');
-        var instances_datepicker = M.Datepicker.init(elems_datepicker, { autoClose: false, container: "p" });
-
-        var elems_chips = document.querySelectorAll('.chips');
-
-        var options_chips = {};
-        options_chips.data = [];
-
-        options_chips.placeholder = 'Contenu du plat';
-        var instances_chips = M.Chips.init(elems_chips, options_chips);
-
-        var elems_tooltipped = document.querySelectorAll('.tooltipped');
-        var options_tooltipped = {};
-
-        var instances_tooltipped = M.Tooltip.init(elems_tooltipped, options_tooltipped);
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyDeTPGZJmgE6pJ_IYLOOdPLaE5YlRBjUeo",
+      authDomain: "apero-68e78.firebaseapp.com",
+      projectId: "apero-68e78",
+      storageBucket: "apero-68e78.appspot.com",
+      messagingSenderId: "94438058503",
+      appId: "1:94438058503:web:457015fa059625ce6318a2",
+      measurementId: "G-J7CTL6B73M"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 
 
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/wNumb.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/bundle.js"></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let _profileAccessToken = null;
+      let _profileDisplayName = null;
+      let _profileEmail = null;
+      let _profilePhotoUrl = null;
+
+      var elems_datepicker = document.querySelectorAll('.datepicker');
+      var instances_datepicker = M.Datepicker.init(elems_datepicker, { autoClose: false, container: "p" });
+
+      var elems_chips = document.querySelectorAll('.chips');
+
+      var options_chips = {};
+      options_chips.data = [];
+
+      options_chips.placeholder = 'Contenu du plat';
+      var instances_chips = M.Chips.init(elems_chips, options_chips);
+
+      var elems_tooltipped = document.querySelectorAll('.tooltipped');
+      var options_tooltipped = {};
+
+      var instances_tooltipped = M.Tooltip.init(elems_tooltipped, options_tooltipped);
 
 
-        // -- Modal publishing form -- 
 
-        var publishing_form_modal = document.getElementById('modal-publishing-form');
-        var publishing_form_modal_options = {};
-        publishing_form_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
-        publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
-        publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
-        publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-        M.Modal.init(publishing_form_modal, publishing_form_modal_options);
-        var publishing_form_modal_links = elements = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
-        publishing_form_modal_links.forEach((href) => {
-          href.addEventListener("click", (e) => {
 
-            console.log("_accessToken: " + _profileAccessToken);
-            //console.log(e);
-            console.log(e.target.firstChild.data);
 
-          });
+      // -- Modal publishing form -- 
+
+      var publishing_form_modal = document.getElementById('modal-publishing-form');
+      var publishing_form_modal_options = {};
+      publishing_form_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
+      publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
+      publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
+      publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
+      M.Modal.init(publishing_form_modal, publishing_form_modal_options);
+      var publishing_form_modal_links = elements = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
+      publishing_form_modal_links.forEach((href) => {
+        href.addEventListener("click", (e) => {
+
+          console.log("_accessToken: " + _profileAccessToken);
+          //console.log(e);
+          console.log(e.target.firstChild.data);
 
         });
 
-
-        // -- Caroussel --
-
-        var elems_carousel = document.querySelectorAll('.carousel');
-        var elems_carousel_options = {};
-        M.Carousel.init(elems_carousel, elems_carousel_options);
+      });
 
 
-        var elems_fixed_btn = document.querySelectorAll('.fixed-action-btn');
-        var options_elems_fixed_btn = {};
-        var instances = M.FloatingActionButton.init(elems_fixed_btn, options_elems_fixed_btn);
+      //------------ JS SEARCH MODAL - START
 
-        var elems_fixed_btn_actions = document.querySelectorAll('.fixed-action-btn li a i');
-        elems_fixed_btn_actions.forEach((href) => {
-          href.addEventListener("click", (e) => {
+      var elems_search_form = document.querySelectorAll('.autocomplete');
+      M.Autocomplete.init(elems_search_form, {
+        data: {
+          "Noix": null,
+          "arachides": null,
+          "Oeufs": null,
+          "Poissons": null,
+          "Volaille": null,
+          "Viande": null,
+          "Bleuets": 'https://placehold.it/250x250',
+          "saumon": 'https://placehold.it/250x250',
+          "thon": 'https://placehold.it/250x250',
+          "sole": 'https://placehold.it/250x250',
+          "Arachides": null,
+          "truite": null,
+          "dinde": null,
+          "agneau": null,
+          "crabe": null,
+          "homard": null,
+          "crevettes": null,
 
-            console.log("_profileAccessToken: " + _profileAccessToken);
-            //console.log(e);
-            console.log("btnClicked: " + e.target.firstChild.data);
+        },
+        minLength: 1,
+        onAutocomplete: (txt) => {
 
-          });
+          console.log("search-keyword: " + txt);
+
+
+          var html = `<h4>Résultat: ${txt} </h4><ul class="collection">
+    <li class="collection-item avatar">
+      <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>`;
+          var result = document.getElementById("search-result");
+          result.innerHTML = html;
+
+        },
+      });
+
+      //----------- SEARCH MODAL - END
+
+      // -- Caroussel --
+
+      var elems_carousel = document.querySelectorAll('.carousel');
+      var elems_carousel_options = {};
+      M.Carousel.init(elems_carousel, elems_carousel_options);
+
+
+      var elems_fixed_btn = document.querySelectorAll('.fixed-action-btn');
+      var options_elems_fixed_btn = {};
+      var instances = M.FloatingActionButton.init(elems_fixed_btn, options_elems_fixed_btn);
+
+      var elems_fixed_btn_actions = document.querySelectorAll('.fixed-action-btn li a i');
+      elems_fixed_btn_actions.forEach((href) => {
+        href.addEventListener("click", (e) => {
+
+          console.log("_profileAccessToken: " + _profileAccessToken);
+          //console.log(e);
+          console.log("btnClicked: " + e.target.firstChild.data);
 
         });
 
-
-        // firebase auth 
-
-        // Initialize the FirebaseUI Widget using Firebase.
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-        var uiConfig = {
-          callbacks: {
-            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-              if (authResult.credential) {
-
-                _profileAccessToken = authResult.credential.accessToken;
-                //console.log(authResult.credential.accessToken);
-
-                if (authResult.user) {
-
-                  //console.log(authResult.user.displayName);
-                  _profileDisplayName = authResult.user.displayName;
-
-                  //console.log(authResult.user.email);
-                  _profileEmail = authResult.user.email;
-
-                  //console.log(authResult.user.photoURL);
-                  _profilePhotoUrl = authResult.user.photoURL;
-
-                  //console.log(authResult.user.metadata.lastSignInTime);
-
-                  document.querySelector('#profileBackground').setAttribute("style", "display:block");
-                  document.querySelector('#profilePhoto img').setAttribute('src', _profilePhotoUrl);
-                  document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
-                  document.querySelector('#profileDisplayName').appendChild(document.createTextNode(_profileDisplayName));
-                  document.querySelector('#profileEmail').appendChild(document.createTextNode(_profileEmail));
-                  document.querySelector('#disconnectLink').setAttribute("style", "display:block");
+      });
 
 
+      // firebase auth 
 
-                }
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+      var uiConfig = {
+        callbacks: {
+          signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+            if (authResult.credential) {
+
+              _profileAccessToken = authResult.credential.accessToken;
+              //console.log(authResult.credential.accessToken);
+
+              if (authResult.user) {
+
+                //console.log(authResult.user.displayName);
+                _profileDisplayName = authResult.user.displayName;
+
+                //console.log(authResult.user.email);
+                _profileEmail = authResult.user.email;
+
+                //console.log(authResult.user.photoURL);
+                _profilePhotoUrl = authResult.user.photoURL;
+
+                //console.log(authResult.user.metadata.lastSignInTime);
+
+                document.querySelector('#profileBackground').setAttribute("style", "display:block");
+                document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
+                document.querySelector('#profilePhoto img').setAttribute('src', _profilePhotoUrl);
+                document.querySelector('#profileDisplayName').appendChild(document.createTextNode(_profileDisplayName));
+                document.querySelector('#profileEmail').appendChild(document.createTextNode(_profileEmail));
+                document.querySelector('#disconnectLink').setAttribute("style", "display:block");
+
+
 
               }
-
-              // User successfully signed in.
-              // Return type determines whether we continue the redirect automatically
-              // or whether we leave that to developer to handle.
-              return false;
-            },
-
-          },
-          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-          signInFlow: 'popup',
-          signInOptions: [
-            {
-              provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-              scopes: [
-                'https://www.googleapis.com/auth/contacts.readonly'
-              ],
-              customParameters: {
-                // Forces account selection even when one account
-                // is available.
-                prompt: 'select_account'
-              }
-            },
-            {
-              provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-              scopes: [
-                'public_profile',
-                'email',
-                'user_likes',
-                'user_friends'
-              ],
-              customParameters: {
-                // Forces password re-entry.
-                auth_type: 'reauthenticate'
-              }
-            },
-          ],
-          // Terms of service url.
-          //tosUrl: '<your-tos-url>',
-          // Privacy policy url.
-          //privacyPolicyUrl: '<your-privacy-policy-url>'
-        };
-
-
-        // The start method will wait until the DOM is loaded.
-        ui.start('#firebaseui-auth-container', uiConfig);
-
-
-
-
-
-
-
-
-
-        //MODAL CONTROLLER MANAGER : START
-
-        var elems_modal = document.querySelectorAll('.modal');
-        var options_modal = {};
-
-
-        options_modal.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
-        options_modal.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
-        options_modal.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
-        options_modal.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-        var instances_modal = M.Modal.init(elems_modal, options_modal);
-        var modal_elems_links = elements = document.querySelectorAll('.modal .modal-footer a');
-        modal_elems_links.forEach((href) => {
-
-          let modalID = href.parentNode.parentNode.getAttribute("id");
-
-          href.addEventListener("click", (e) => {
-            console.log("_accessToken: " + _profileAccessToken);
-            let valueBtnClicked = e.target.firstChild.data;
-            console.log("valueBtnClicked: " + valueBtnClicked);
-
-
-            if (modalID == "modal-disconnect" && valueBtnClicked == "OUI") {
-
-              console.log(modalID);
-
-              firebase.auth().signOut().then((e) => {
-
-                console.log("sign-out" + e);
-
-                _profileAccessToken = null;
-                _profilePhotoUrl = null;
-                _profileDisplayName = null;
-
-                document.querySelector('#profileBackground').remove();
-                document.querySelector('#profilePhoto').remove();
-                document.querySelector('#disconnectLink').remove();
-                document.querySelector('#profileDisplayName').remove();
-                document.querySelector('#profileEmail').remove();              
-                
-                document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:block");
-
-                setTimeout(()=> {                
-                  ui.start('#firebaseui-auth-container', uiConfig);
-                  document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:none");
-
-                }, 2000);
-
-                setTimeout(()=> {                
-                localStorage.clear();
-                  location.href = '/';
-                }, 3000);
-
-
-              }).catch((error) => {
-                // An error happened.
-                console.log("sign-out-error" + error);
-              });
 
             }
 
+            // User successfully signed in.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return false;
+          },
+
+        },
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInOptions: [
+          {
+            provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            scopes: [
+              'https://www.googleapis.com/auth/contacts.readonly'
+            ],
+            customParameters: {
+              // Forces account selection even when one account
+              // is available.
+              prompt: 'select_account'
+            }
+          },
+          {
+            provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            scopes: [
+              'public_profile',
+              'email',
+              'user_likes',
+              'user_friends'
+            ],
+            customParameters: {
+              // Forces password re-entry.
+              auth_type: 'reauthenticate'
+            }
+          },
+        ],
+        // Terms of service url.
+        //tosUrl: '<your-tos-url>',
+        // Privacy policy url.
+        //privacyPolicyUrl: '<your-privacy-policy-url>'
+      };
 
 
-          });
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
+
+
+      //MODAL CONTROLLER MANAGER : START
+
+      var elems_modal = document.querySelectorAll('.modal');
+      var options_modal = {};
+
+
+      options_modal.onOpenStart = () => { //console.log("Avant de t'ouvrir, fait ceci! ") 
+      };
+      options_modal.onOpenEnd = () => { //console.log("Une fois ouvert, fait ceci! ") 
+      };
+      options_modal.onCloseStart = () => { //console.log("Avant de te fermer. Fait ceci!") 
+      };
+      options_modal.onCloseEnd = () => { //console.log("Une fois fermé, fait ceci!") 
+      };
+      //options_modal.startingTop = "2%";
+      //options_modal.endingTop = "5%";
+
+
+      var instances_modal = M.Modal.init(elems_modal, options_modal);
+      var modal_elems_links = elements = document.querySelectorAll('.modal .modal-footer a');
+      modal_elems_links.forEach((href) => {
+
+        let modalID = href.parentNode.parentNode.getAttribute("id");
+        console.log("modal ID: " + modalID);
+
+        href.addEventListener("click", (e) => {
+          console.log("_accessToken: " + _profileAccessToken);
+          let valueBtnClicked = e.target.firstChild.data;
+          console.log("valueBtnClicked: " + valueBtnClicked);
+
+
+          if (modalID == "modal-disconnect" && valueBtnClicked == "OUI") {
+
+            console.log(modalID);
+
+            firebase.auth().signOut().then((e) => {
+
+              console.log("sign-out" + e);
+
+              _profileAccessToken = null;
+              _profilePhotoUrl = null;
+              _profileDisplayName = null;
+
+              document.querySelector('#profileBackground').remove();
+              document.querySelector('#profilePhoto').remove();
+              document.querySelector('#disconnectLink').remove();
+              document.querySelector('#profileDisplayName').remove();
+              document.querySelector('#profileEmail').remove();
+
+              document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:block");
+
+              setTimeout(() => {
+                ui.start('#firebaseui-auth-container', uiConfig);
+                document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:none");
+
+              }, 2000);
+
+              setTimeout(() => {
+                localStorage.clear();
+                location.href = '/';
+              }, 3000);
+
+
+            }).catch((error) => {
+              // An error happened.
+              console.log("sign-out-error" + error);
+            });
+
+          }
+
+
 
         });
-        //MODAL CONTROLLER MANAGER : END
+
+      });
+      //MODAL CONTROLLER MANAGER : END
 
 
 
-      }); //end DOMLoaded
+    }); //end DOMLoaded
 
-    </script>
+  </script>
 
 </body>
 
