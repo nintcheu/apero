@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,36 +9,32 @@
   <!-- CSS  -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
 </head>
 
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
+  <nav class="light-blue lighten-1">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro!</a>
-      <!-- IF LOGGED OUT -->
-
 
       <ul id="nav-mobile" class="sidenav">
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
-     Your app may use that space for branding, controls and other customizations.-->
-
-        <div id="firebaseui-auth-container">
-          <div class="progress" style="display:none">
-            <div class="indeterminate"></div>
+        <li>
+          <div id="firebaseui-auth-container">
+            <div class="progress" style="display:none">
+              <div class="indeterminate"></div>
+            </div>
           </div>
-        </div>
-
+        </li>
         <li>
           <div class="user-view">
             <div class="background" id="profileBackground" style="display:none;">
               <!-- <img src="https://dummyimage.com/1000x750"> -->
-              <img src="https://materializecss.com/images/office.jpg">
+              <img alt="" src="https://materializecss.com/images/office.jpg">
             </div>
 
             <a href="#user" id="profilePhoto">
-              <img style="display:none" class="circle" width="150" height="150" src="https://dummyimage.com/150x150">
+              <img style="display:none" alt="" class="circle" width="150" height="150"
+                src="https://dummyimage.com/150x150">
             </a>
 
             <a href="#name"><span class="white-text name" id="profileDisplayName"></span></a>
@@ -53,50 +49,18 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li><a class="subheader">menu</a></li>
+        <li><a class="subheader"></a></li>
+        <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
+        <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-ordered-dishes">Mes commandes</a></li>
         <li><a class="waves-effect" href="#!">A propos</a></li>
-        <li><a class="waves-effect" href="#!">Guide</a></li>
-        <li><a href="#!"><i class="material-icons">feedback</i>feedback</a></li>
+        <li><a class="waves-effect small" href="#!">Guide</a></li>
+        <li><a href="#!"><i class="material-icons small">feedback</i>feedback</a></li>
 
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-
-
-
-      <!-- IF LOGGED IN -->
-      <!--
-    <ul id="nav-mobile" class="sidenav">
-      <li><div class="user-view">
-        <div class="background">
-
-          <img src="https://materializecss.com/images/office.jpg">
-          <img src="https://dummyimage.com/1000x750">
-
-        </div>
-
-        <a href="#user"><img class="circle" src="https://materializecss.com/images/yuna.jpg"></a>
-        <a href="#user"><img class="circle" src="https://dummyimage.com/150x150"></a> 
-
-
-        <a href="#name"><span class="white-text name">Brice Miller</span></a>
-        <a href="#email"><span class="white-text email">b.miller@gmail.com</span></a>
-      </div></li>
-      <li><a href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
-      <li><div class="divider"></div></li>
-      <li><a class="subheader">menu</a></li>
-      <li><a class="waves-effect" href="#!">Contact</a></li>
-      <li><a class="waves-effect" href="#!">Guide</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  -->
-
-
     </div>
   </nav>
-
-
-
 
   <div class="container">
     <div class="row">
@@ -112,16 +76,14 @@
 
         <h4>Commandes vedettes</h4>
         <div class="carousel">
-          <a class="carousel-item" href="#one!"><img src="https://dummyimage.com/250"></a>
-          <a class="carousel-item" href="#two!"><img src="https://dummyimage.com/250"></a>
-          <a class="carousel-item" href="#three!"><img src="https://dummyimage.com/250"></a>
-          <a class="carousel-item" href="#four!"><img src="https://dummyimage.com/250"></a>
-          <a class="carousel-item" href="#five!"><img src="https://dummyimage.com/250"></a>
+          <a class="carousel-item" href="#one!"><img alt="" src="https://dummyimage.com/300x250"></a>
+          <a class="carousel-item" href="#two!"><img alt="" src="https://dummyimage.com/300x250"></a>
+          <a class="carousel-item" href="#three!"><img alt="" src="https://dummyimage.com/300x250"></a>
+          <a class="carousel-item" href="#four!"><img alt="" src="https://dummyimage.com/300x250"></a>
+          <a class="carousel-item" href="#five!"><img alt="" src="https://dummyimage.com/300x250"></a>
         </div>
       </div>
     </div>
-
-
 
     <div class="container">
       <br><br>
@@ -131,10 +93,8 @@
       </div>
     </div>
 
-
     <div class="container">
       <div class="section">
-
         <!--   Icon Section   -->
         <div class="row">
 
@@ -162,8 +122,6 @@
             </div>
           </div>
 
-
-
           <div class="col s12 m4">
             <div class="icon-block">
               <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
@@ -176,322 +134,584 @@
             </div>
           </div>
         </div>
-
-
-
-        <!-- end container div-->
       </div>
       <br><br>
     </div>
 
-    <footer class="page-footer orange">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Apéro!</h5>
-            <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits
-              maison!".
-              Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
-              Avez-vous déjà envisagé de commercialiser ce talent de façon occasionnel et ainsi générer un revenu
-              passif?<br />
-              Tout ce dont vous avez besoin, c'est "publier votre meilleur plat sur notre plateforme" avec votre
-              honoraire de service, puis d'accepter à votre convenance les ordres de commande.</p>
-
-
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Settings</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          <!-- Made by <a class="orange-text text-lighten-3" href="#!">Materialize</a>-->
-        </div>
-      </div>
-    </footer>
-
-
-
-
-
-    <!-- Fixed button-actions like GMAIL app -->
-
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large light-blue">
-
-        <i class="large material-icons">menu</i>
-
-      </a>
-      <ul>
-        <li><a class="btn-floating red modal-trigger pulse" href="#!" data-target="modal-publishing-form"><i
-              class="large material-icons">add_circle</i></a></li>
-        <!--<li><a class="btn-floating yellow darken-1 modal-trigger" href="#!" data-target="modal-account"><i class="large material-icons">person</i></a></li>-->
-
-        <li><a class="btn-floating yellow darken-1 sidenav-trigger" href="#!" data-target="nav-mobile"><i
-              class="large material-icons">person</i></a></li>
-
-        <li><a class="btn-floating green modal-trigger" href="#notifications-modal"><i
-              class="material-icons">notifications</i></a></li>
-        <li><a class="btn-floating blue modal-trigger" href="#!" data-target="modal-search"><i
-              class="material-icons">search</i></a></li>
-      </ul>
-    </div>
-
-
-    <!-- Modal Structure -->
-
-    <div id="modal-conditions-agreement" class="modal modal-fixed-footer">
-      <div class="modal-content">
-        <h4>Conditions d'utilisation</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
-    </div>
-
-
-    <!-- Modal publishing form offer-->
-
-    <div id="modal-publishing-form" class="modal modal-fixed-footer">
-      <div class="modal-header">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
-            class="large material-icons">cancel</i></a>
-      </div>
-      <div class="modal-content">
-        <h4>Publier un plat</h4>
-
-        <!-- start form publication -->
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="dish" type="text" class="validate">
-              <label for="dish">Intitulé du plat</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field inline">
-                <input id="dish_price" type="number" class="validate" min="5" max="100">
-                <label for="dish_price">Prix (dollars canadien)</label>
-                <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 5 CAD - max. 100
-                  CAD</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="file-field input-field">
-            <div class="btn">
-              <span>3 Photos du plat</span>
-              <input type="file" multiple>
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="Upload one or more files">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix tooltipped"
-                data-tooltip="Saisir un aliment puis appuyer sur la touche entrée au clavier"
-                data-position="right">info_outline</i>
-
-              <!-- Customizable input  -->
-              <div class="chips">
-                <input id="dish_ingrediant" class="custom-class">
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="company" type="text" class="validate">
-              <label for="company">Entreprise ou Personne</label>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="input-field col s6">
-              <p class="calendar"></p>
-              <input type="text" class="datepicker" id="service_date_start" class="validate">
-              <label for="service_date_start">Début du service</label>
-            </div>
-            <div class="input-field col s6">
-              <p class="calendar"></p>
-              <input type="text" class="datepicker" id="service_date_end" class="validate">
-              <label for="service_date_end">Fin du service</label>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" id="service_zipcode" class="validate">
-              <label for="service_zipcode">Code postal</label>
-            </div>
-
-            <div class="input-field col s6">
-              <input type="text" id="service_city" class="validate">
-              <label for="service_city">Ville</label>
-            </div>
-          </div>
-        </form>
-        <br>
-      </div> <!-- end modal content-->
-      <!-- end form publication dish -->
-
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
-        <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
-          data-target="modal-conditions-agreement">publier le plat
-        </button>
-      </div><!-- end modal footer-->
-
-
-    </div>
-
-
-
-    <!-- MODALE DISCONNECT : DEBUT -->
-    <div id="modal-disconnect" class="modal modal-fixed-footer">
-      <div class="modal-header">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
-            class="large material-icons">cancel</i></a>
-      </div>
-      <div class="modal-content">
-        <h4>Déconnexion</h4>
-        <p>Voulez-vous nous quitter ?</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">NON</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OUI</a>
-
-      </div>
-    </div>
-    <!-- MODALE DISCONNECT : FIN -->
-
-
-    <!-- DEBUT : modal-notification -->
-    <div id="notifications-modal" class="modal bottom-sheet">
-      <div class="modal-content">
-        <h4>Commandes</h4>
-
-        <ul class="collection">
-          <li class="collection-item avatar">
-            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span class="title">Ben Laurier</span>
-            <p>
-              Une fondue au chocolat
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <img src="https://dummyimage.com/150x150" alt="" class="circle">
-            <span class="title">Céline Dion</span>
-            <p>
-              Un pain aux bananes
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <img src="https://dummyimage.com/150x150" alt="" class="circle">
-            <span class="title">Georges Laraq </span>
-            <p>
-              Un riz
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <img src="https://dummyimage.com/150x150" alt="" class="circle">
-            <span class="title">Ali Awal</span>
-            <p>
-              Un plantain
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-    <!-- FIN: modal-notifications-->
-
-
-    <!-- SEARCH MODAL : START -->
-
-    <div id="modal-search" class="modal modal-fixed-footer">
-      <div class="modal-header">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i
-            class="large material-icons">cancel</i></a>
-      </div>
-      <div class="modal-content">
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">search</i>
-                <input type="text" id="autocomplete-input" class="autocomplete">
-                <label for="autocomplete-input">Mot(s) clé(s)</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">SEARCH</a>
-      </div>
-    </div>
-
-
-    <!-- SEARCH MODAL : END -->
-
   </div>
 
 
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Apéro!</h5>
+          <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits
+            maison!".
+            Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
+            Avez-vous déjà envisagé de commercialiser ce talent de façon occasionnel et ainsi générer un revenu
+            passif?<br />
+            Tout ce dont vous avez besoin, c'est "publier votre meilleur plat sur notre plateforme" avec votre
+            honoraire de service, puis d'accepter à votre convenance les ordres de commande.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <!-- Made by <a class="orange-text text-lighten-3" href="#!">Materialize</a>-->
+      </div>
+    </div>
+  </footer>
+
+  <!-- FIXED FLOATING BTN MENU : START -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large light-blue">
+      <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red modal-trigger pulse" href="#!" data-target="modal-publishing-form"><i
+            class="large material-icons">add_circle</i></a></li>
+
+      <li><a class="btn-floating yellow darken-1 sidenav-trigger" href="#!" data-target="nav-mobile"><i
+            class="large material-icons">person</i></a></li>
+
+      <li><a class="btn-floating green modal-trigger" href="#modal-notifications"><i
+            class="material-icons">notifications</i></a></li>
+      <li><a class="btn-floating blue modal-trigger" href="#!" data-target="modal-search"><i
+            class="material-icons">search</i></a></li>
+    </ul>
+  </div>
+  <!-- FIXED FLOATING BTN MENU : END -->
+
+
+
+  <!-- MODAL - MY ORDERS DISHES : START -->
+  <div id="modal-ordered-dishes" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+
+    <div class="modal-content">
+      <h4>Mes commandes</h4>
+
+      <!--
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">filter_drama</i>
+            En attente d'acceptation
+            <span class="new badge">4</span>
+          </div>
+          <div class="collapsible-body">
+            <p>
+
+            </p>
+
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">place</i>
+            Accep†ée et en attente de paiement
+            <span class="badge">1</span>
+          </div>
+          <div class="collapsible-body">
+            <p>
+            <table class="highlight responsive-table">
+              <thead>
+                <tr>
+                  <th>Plat</th>
+                  <th>Prix</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Toffu aux amandes</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Beignets au chocolat</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Gâteau au yaourt</td>
+                  <td>$7.00</td>
+                </tr>
+              </tbody>
+            </table>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">place</i>
+            En cours de préparation
+            <span class="badge">1</span>
+          </div>
+          <div class="collapsible-body">
+            <p>
+            <table class="highlight responsive-table">
+              <thead>
+                <tr>
+                  <th>Plat</th>
+                  <th>Prix</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Toffu aux amandes</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Beignets au chocolat</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Gâteau au yaourt</td>
+                  <td>$7.00</td>
+                </tr>
+              </tbody>
+            </table>
+            </p>
+          </div>
+        </li>
+      </ul>
+    -->
+
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#test1">En attente</a></li>
+            <li class="tab col s3"><a class="active" href="#test2">A payer</a></li>
+            <li class="tab col s3"><a href="#test3">En cuisine</a></li>
+            <li class="tab col s3"><a href="#test4">Livré</a></li>
+
+          </ul>
+        </div>
+        <div id="test1" class="col s12">
+
+          <small>En attente d'acceptation par le fournisseur</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Prix</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Toffu aux amandes</td>
+                <td>$0.87</td>
+              </tr>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>$3.76</td>
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>$7.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="test2" class="col s12">
+
+          <small>Accepté par le fournisseur. En attente de votre paiement.</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Prix</th>
+                <th>Frais de livraison</th>
+                <th>Date livraison</th>
+                <th>Total à payer</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>$3.76</td>
+                <td>$10.00</td>
+                <td>10 janv 2020, PM</td>
+                <td>$13.76</td>
+
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>$7.00</td>
+                <td>$5.00</td>
+                <td>20 dec 2019, AM</td>
+                <td>$12.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="test3" class="col s12">
+          <small>Paiement reçu! En cours de préparation par le fournisseur.</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Date livraison</th>
+                <th>Total payé</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>10 janv 2020, PM</td>
+                <td>$13.76</td>
+
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>20 dec 2019, AM</td>
+                <td>$12.00</td>
+              </tr>
+            </tbody>
+          </table>
+      
+        </div>
+        <div id="test4" class="col s12">
+          <small>Plats livrés</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Date livraison</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+            
+                <td>10 janv 2020, PM</td>
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>20 dec 2019, AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Quitter</a>
+    </div>
+  </div>
+  <!-- MODAL - MY ORDERS DISHES : END -->
+
+  <!-- MODAL - MY POSTED DISHED : START -->
+  <div id="modal-posted-dishes" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+
+    <div class="modal-content">
+      <h4>Mes plats publiés</h4>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Plat</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Toffu aux amandes</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Beignets au chocolat</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Gâteau au yaourt</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
+    </div>
+  </div>
+  <!-- MODAL - MY POSTED DISHED : END -->
+
+
+  <!-- MODAL CONDITIONS AGREEMENT : START -->
+  <div id="modal-conditions-agreement" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Conditions d'utilisation</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  <!-- MODAL CONDITIONS AGREEMENT : END -->
+
+  <!-- MODAL PULISHING FORM DISH : START -->
+  <div id="modal-publishing-form" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Publier un plat</h4>
+
+      <!-- start form publication -->
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="dish" type="text" class="validate">
+            <label for="dish">Intitulé du plat</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field inline">
+              <input id="dish_price" type="number" class="validate" min="40" max="100">
+              <label for="dish_price">Prix (dollars canadien)</label>
+              <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 40 CAD - max. 100
+                CAD</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>3 Photos du plat</span>
+            <input type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix tooltipped"
+              data-tooltip="Saisir un aliment puis appuyer sur la touche entrée au clavier"
+              data-position="right">info_outline</i>
+
+            <!-- Customizable input  -->
+            <div class="chips">
+              <input id="dish_ingrediant" class="custom-class">
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="company" type="text" class="validate">
+            <label for="company">Entreprise ou Personne</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker validate" id="service_date_start">
+            <label for="service_date_start">Début du service</label>
+          </div>
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker validate" id="service_date_end">
+            <label for="service_date_end">Fin du service</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="service_zipcode" class="validate">
+            <label for="service_zipcode">Code postal</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input type="text" id="service_city" class="validate">
+            <label for="service_city">Ville</label>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div> <!-- end modal content-->
+    <!-- end form publication dish -->
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
+      <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
+        data-target="modal-conditions-agreement">publier le plat
+      </button>
+    </div>
+  </div>
+  <!-- MODAL PULISHING FORM DISH : END -->
+
+  <!-- MODALE DISCONNECT : DEBUT -->
+  <div id="modal-disconnect" class="modal modal-fixed-footer scale-transition scale-in scale-out">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Déconnexion</h4>
+      <p>Voulez-vous nous quitter ?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">NON</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OUI</a>
+
+    </div>
+  </div>
+  <!-- MODAL DISCONNECT : FIN -->
+
+  <!-- MODAL NOTIFICATIONS : START -->
+  <div id="modal-notifications" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Demandes de service</h4>
+
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+          <span class="title">Ben Laurier</span>
+          <p>
+            Une fondue au chocolat
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Céline Dion</span>
+          <p>
+            Un pain aux bananes
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Georges Laraq </span>
+          <p>
+            Un riz
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Ali Awal</span>
+          <p>
+            Un plantain
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <!-- MODAL NOTIFICATIONS : END -->
+
+  <!-- SEARCH MODAL : START -->
+  <div id="modal-search" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+
+      <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="autocomplete-input" class="autocomplete">
+              <label for="autocomplete-input">Mot(s) clé(s)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">SEARCH</a>
+    </div>
+
+  </div>
+  <!-- SEARCH MODAL : END -->
+
+
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
   <!-- firebase -->
 
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -525,8 +745,6 @@
     firebase.analytics();
   </script>
 
-
-
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
@@ -540,6 +758,9 @@
       let _profileDisplayName = null;
       let _profileEmail = null;
       let _profilePhotoUrl = null;
+
+
+      M.Tabs.init(document.querySelectorAll('.tabs'), {});
 
       var elems_datepicker = document.querySelectorAll('.datepicker');
       var instances_datepicker = M.Datepicker.init(elems_datepicker, { autoClose: false, container: "p" });
@@ -771,15 +992,27 @@
 
       var elems_modal = document.querySelectorAll('.modal');
       var options_modal = {};
+      let currentModalID = null;
 
 
-      options_modal.onOpenStart = () => { //console.log("Avant de t'ouvrir, fait ceci! ") 
+      options_modal.onOpenStart = (modal) => {
+        //currentModalID = modal.getAttribute('id')
+        //console.log("openStart " + currentModalID);
       };
-      options_modal.onOpenEnd = () => { //console.log("Une fois ouvert, fait ceci! ") 
+
+      options_modal.onOpenEnd = (modal) => {
+        currentModalID = modal.getAttribute('id')
+        console.log("openEnd " + currentModalID);
       };
-      options_modal.onCloseStart = () => { //console.log("Avant de te fermer. Fait ceci!") 
+
+      options_modal.onCloseStart = (modal) => {
+        //console.log("closeStart " + modal.getAttribute('id'));
+
       };
-      options_modal.onCloseEnd = () => { //console.log("Une fois fermé, fait ceci!") 
+
+      options_modal.onCloseEnd = (modal) => {
+        console.log("CloseEnd " + modal.getAttribute('id'));
+
       };
       //options_modal.startingTop = "2%";
       //options_modal.endingTop = "5%";
@@ -789,18 +1022,14 @@
       var modal_elems_links = elements = document.querySelectorAll('.modal .modal-footer a');
       modal_elems_links.forEach((href) => {
 
-        let modalID = href.parentNode.parentNode.getAttribute("id");
-        console.log("modal ID: " + modalID);
-
         href.addEventListener("click", (e) => {
-          console.log("_accessToken: " + _profileAccessToken);
+          let modalID = href.parentNode.parentNode.getAttribute("id");
           let valueBtnClicked = e.target.firstChild.data;
-          console.log("valueBtnClicked: " + valueBtnClicked);
 
+          console.log("modalID: " + modalID + ", valueBtnClicked: " + valueBtnClicked);
+          //console.log("_accessToken: " + _profileAccessToken);
 
-          if (modalID == "modal-disconnect" && valueBtnClicked == "OUI") {
-
-            console.log(modalID);
+          if (currentModalID == "modal-disconnect" && valueBtnClicked == "OUI") {
 
             firebase.auth().signOut().then((e) => {
 
@@ -849,7 +1078,6 @@
     }); //end DOMLoaded
 
   </script>
-
 </body>
 
 </html>
