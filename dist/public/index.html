@@ -52,9 +52,8 @@
         <li><a class="subheader"></a></li>
         <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
         <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-ordered-dishes">Mes commandes</a></li>
-        <li><a class="waves-effect" href="#!">A propos</a></li>
-        <li><a class="waves-effect small" href="#!">Guide</a></li>
-        <li><a href="#!"><i class="material-icons small">feedback</i>feedback</a></li>
+        <li><a class="waves-effect small" href="#!"><i class="material-icons small">live_help</i>Aide</a></li>
+        <li><a class="modal-trigger" href="#!" data-target="modal-feedback-form"><i class="material-icons small">feedback</i>Feedback</a></li>
 
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -151,7 +150,7 @@
             Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
             Avez-vous déjà envisagé de commercialiser ce talent de façon occasionnel et ainsi générer un revenu
             passif?<br />
-            Tout ce dont vous avez besoin, c'est "publier votre meilleur plat sur notre plateforme" avec votre
+            Tout ce dont vous avez besoin, c'est <strong>"PUBLIER GRATUITEMENT"</strong> votre meilleur plat sur notre plateforme avec votre
             honoraire de service, puis d'accepter à votre convenance les ordres de commande.</p>
 
 
@@ -426,6 +425,48 @@
   </div>
   <!-- MODAL CONDITIONS AGREEMENT : END -->
 
+
+  <!-- MODAL FEEDBACK FORM: START -->
+  <div id="modal-feedback-form" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Votre opinion compte!</h4>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="company" type="text" class="validate">
+              <label for="company">Entreprise ou Personne</label>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="feedback-textarea" class="materialize-textarea"></textarea>
+              <label for="ifeedback-textarea">Votre message</label>
+            </div>
+          </div>
+        </form>
+        <br>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">RESET</a>
+      <button class="btn waves-effect waves-light modal-trigger" type="submit" name="action"
+        data-target="modal-conditions-agreement">Soumettre
+      </button>
+    </div>
+  </div>
+  <!-- MODAL FEEDBACK FORM : END -->
+
+
+
   <!-- MODAL PULISHING FORM DISH : START -->
   <div id="modal-publishing-form" class="modal modal-fixed-footer">
     <div class="modal-header">
@@ -434,7 +475,10 @@
     <div class="modal-content">
       <h4>Publier un plat</h4>
 
-      <!-- start form publication -->
+      <div class="row">
+
+
+      </div>
       <form class="col s12">
         <div class="row">
           <div class="input-field col s12">
@@ -514,9 +558,7 @@
           </div>
         </div>
       </form>
-      <br>
-    </div> <!-- end modal content-->
-    <!-- end form publication dish -->
+    </div>
 
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
@@ -672,6 +714,8 @@
       let _profileEmail = null;
       let _profilePhotoUrl = null;
 
+
+      M.textareaAutoResize(document.querySelector('#feedback-textarea'));
 
       M.Tabs.init(document.querySelectorAll('.tabs'), {});
 
