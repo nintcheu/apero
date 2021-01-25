@@ -50,8 +50,9 @@
           <div class="divider"></div>
         </li>
         <li><a class="subheader"></a></li>
-        <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
-        <li><a class="waves-effect modal-trigger" href="#!" data-target="modal-ordered-dishes">Mes commandes</a></li>
+        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
+        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-ordered-dishes">Mes commandes</a>
+        </li>
         <li><a class="waves-effect small" href="#!"><i class="material-icons small">live_help</i>Aide</a></li>
         <li><a class="modal-trigger" href="#!" data-target="modal-feedback-form"><i
               class="material-icons small">feedback</i>Feedback</a></li>
@@ -532,17 +533,18 @@
 
 
         <div class="row">
-            <div class="input-field col s6">
-              <input id="dish_price" type="number" class="validate" min="1" max="20" required>
-              <label for="dish_price">Rayon de livraison (Km)</label>
-              <span class="helper-text" data-error="wrong" data-success="right">Distance min. 1Km - max. 20Km</span>
-            </div>
+          <div class="input-field col s6">
+            <input id="dish_price" type="number" class="validate" min="1" max="20" required>
+            <label for="dish_price">Rayon de livraison (Km)</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Distance min. 1Km - max. 20Km</span>
+          </div>
 
-            <div class="input-field col s6">
-              <input id="dish_price" type="number" class="validate" min="40" max="100" required>
-              <label for="dish_price">Prix ($CAD)</label>
-              <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 40CAD - max. 100CAD</span>
-            </div>
+          <div class="input-field col s6">
+            <input id="dish_price" type="number" class="validate" min="40" max="100" required>
+            <label for="dish_price">Prix ($CAD)</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 40CAD - max.
+              100CAD</span>
+          </div>
         </div>
 
         <div class="row">
@@ -560,7 +562,8 @@
 
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" id="service_zipcode" class="validate" minlength="3" maxlength="6" pattern="[a-zA-Z0-9]{3,6}" required>
+            <input type="text" id="service_zipcode" class="validate" minlength="3" maxlength="6"
+              pattern="[a-zA-Z0-9]{3,6}" required>
             <label for="service_zipcode">Votre code postal</label>
           </div>
 
@@ -743,10 +746,30 @@
   <script>
 
     document.addEventListener('DOMContentLoaded', function () {
-      let _profileAccessToken = null;
-      let _profileDisplayName = null;
-      let _profileEmail = null;
-      let _profilePhotoUrl = null;
+      let _profileAccessToken = window.localStorage.getItem('_profileAccessToken') || null;
+      let _profileDisplayName = window.localStorage.getItem('_profileDisplayName') || null;
+      let _profileEmail = window.localStorage.getItem('_profileEmail') || null;
+      let _profilePhotoUrl = window.localStorage.getItem('_profilePhotoUrl') || null;
+
+      document.querySelectorAll('.granted').forEach((element) => {
+        element.style.display = "none";
+      });
+
+
+      if (_profileAccessToken) {
+
+        document.querySelector('#profileBackground').setAttribute("style", "display:block");
+        document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
+        document.querySelector('#profilePhoto img').setAttribute('src', window.localStorage.getItem("_profilePhotoUrl"));
+        document.querySelector('#profileDisplayName').appendChild(document.createTextNode(window.localStorage.getItem("_profileDisplayName")));
+        document.querySelector('#profileEmail').appendChild(document.createTextNode(window.localStorage.getItem("_profileEmail")));
+        document.querySelector('#disconnectLink').setAttribute("style", "display:block");
+
+        document.querySelectorAll('.granted').forEach((element) => {
+          element.style.display = "block";
+        });
+
+      }
 
 
       M.textareaAutoResize(document.querySelector('#feedback-textarea'));
@@ -886,7 +909,7 @@
       elems_fixed_btn_actions.forEach((href) => {
         href.addEventListener("click", (e) => {
 
-          console.log("_profileAccessToken: " + _profileAccessToken);
+          console.log("_profileAccessToken: " + window.localStorage.getItem('_profileAccessToken'));
           //console.log(e);
           console.log("btnClicked: " + e.target.firstChild.data);
 
@@ -906,29 +929,37 @@
             if (authResult.credential) {
 
               _profileAccessToken = authResult.credential.accessToken;
+              window.localStorage.setItem('_profileAccessToken', _profileAccessToken);
+
               //console.log(authResult.credential.accessToken);
 
               if (authResult.user) {
 
                 //console.log(authResult.user.displayName);
                 _profileDisplayName = authResult.user.displayName;
+                window.localStorage.setItem('_profileDisplayName', _profileDisplayName);
+
 
                 //console.log(authResult.user.email);
                 _profileEmail = authResult.user.email;
+                window.localStorage.setItem('_profileEmail', _profileEmail);
 
                 //console.log(authResult.user.photoURL);
                 _profilePhotoUrl = authResult.user.photoURL;
+                window.localStorage.setItem('_profilePhotoUrl', _profilePhotoUrl);
 
                 //console.log(authResult.user.metadata.lastSignInTime);
 
                 document.querySelector('#profileBackground').setAttribute("style", "display:block");
                 document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
-                document.querySelector('#profilePhoto img').setAttribute('src', _profilePhotoUrl);
-                document.querySelector('#profileDisplayName').appendChild(document.createTextNode(_profileDisplayName));
-                document.querySelector('#profileEmail').appendChild(document.createTextNode(_profileEmail));
+                document.querySelector('#profilePhoto img').setAttribute('src', window.localStorage.getItem("_profilePhotoUrl"));
+                document.querySelector('#profileDisplayName').appendChild(document.createTextNode(window.localStorage.getItem("_profileDisplayName")));
+                document.querySelector('#profileEmail').appendChild(document.createTextNode(window.localStorage.getItem("_profileEmail")));
                 document.querySelector('#disconnectLink').setAttribute("style", "display:block");
 
-
+                document.querySelectorAll('.granted').forEach((element) => {
+                  element.style.display = "block";
+                });
 
               }
 
@@ -954,20 +985,8 @@
               // is available.
               prompt: 'select_account'
             }
-          },
-          {
-            provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-            scopes: [
-              'public_profile',
-              'email',
-              'user_likes',
-              'user_friends'
-            ],
-            customParameters: {
-              // Forces password re-entry.
-              auth_type: 'reauthenticate'
-            }
-          },
+          }
+
         ],
         // Terms of service url.
         //tosUrl: '<your-tos-url>',
@@ -977,7 +996,9 @@
 
 
       // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
+      if (!_profileAccessToken) {
+        ui.start('#firebaseui-auth-container', uiConfig);
+      }
 
 
 
@@ -1030,19 +1051,28 @@
 
               console.log("sign-out" + e);
 
+              document.querySelectorAll('.granted').forEach((element) => {
+                element.style.display = "none";
+              });
+
               _profileAccessToken = null;
               _profilePhotoUrl = null;
               _profileDisplayName = null;
 
-              document.querySelector('#profileBackground').remove();
-              document.querySelector('#profilePhoto').remove();
-              document.querySelector('#disconnectLink').remove();
-              document.querySelector('#profileDisplayName').remove();
-              document.querySelector('#profileEmail').remove();
+              window.localStorage.setItem('_profilePhotoUrl', _profilePhotoUrl);
+              window.localStorage.setItem('_profileDisplayName', _profileDisplayName);
+              window.localStorage.setItem('_profileAccessToken', _profileAccessToken);
 
               document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:block");
 
               setTimeout(() => {
+
+                document.querySelector('#profileBackground').remove();
+                document.querySelector('#profilePhoto').remove();
+                document.querySelector('#disconnectLink').remove();
+                document.querySelector('#profileDisplayName').remove();
+                document.querySelector('#profileEmail').remove();
+
                 ui.start('#firebaseui-auth-container', uiConfig);
                 document.querySelector("#firebaseui-auth-container div").setAttribute("style", "display:none");
 
@@ -1060,8 +1090,6 @@
             });
 
           }
-
-
 
         });
 
