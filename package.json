@@ -18,6 +18,8 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "firebase": "^8.2.4",
+    "materialize-css": "^1.0.0-rc.2",
     "nouislider": "^14.6.3",
     "wnumb": "^1.2.0"
   }
