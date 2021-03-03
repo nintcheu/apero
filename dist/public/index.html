@@ -4,18 +4,51 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>Apéro - Commercialiser votre savoir-faire culinaire</title>
+  <meta name="theme-color" content="#FFFFFF" />
+
+  <title>Aperitif - Commercialiser votre savoir-faire culinaire</title>
 
   <!-- CSS  -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen" />
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+
 </head>
 
 <body>
+  <!--
+  <p id="requireHTTPS" class="hidden">
+    <b>STOP!</b> This page <b>must</b> be served over HTTPS.
+    Please <a>reload this page via HTTPS</a>.
+  </p>
+
+  <p>
+    Make me installable, follow the
+    <a href="https://web.dev/codelab-make-installable/">instructions</a> here.
+  </p>
+-->
+
+
+  <!-- Install button, hidden by default -->
+  <!--
+
+  <div id="installContainer" class="hidden">
+    <button id="butInstall" type="button">
+      Install
+    </button>
+  </div>
+-->
+
+
   <nav class="light-blue lighten-1">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro!</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Aperitif</a>
 
       <ul id="nav-mobile" class="sidenav">
         <li>
@@ -146,7 +179,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Apéro!</h5>
+          <h5 class="white-text">Aperitif</h5>
           <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits
             maison!".
             Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
@@ -493,7 +526,7 @@
 
           <div class="input-field col s12">
             <select name="categories" multiple required>
-              <option value="aperitif">Apéritif</option>
+              <option value="aperitif">Aperitif</option>
               <option value="dessert">Dessert</option>
               <option value="petite-bouchee">Petite bouchée</option>
               <option value="autre">Autre</option>
@@ -511,7 +544,8 @@
               data-position="right">help</i>-->
 
             <!-- Customizable input  -->
-            <span class="dish_content-text">Saisir un aliment puis appuyer sur la touche entrée au clavier</span>
+
+            <span class="dish_content-text">Saisir un ingrédient puis appuyer sur "ENTRER"</span>
 
             <div class="chips">
               <input id="dish_content" class="custom-class" required>
@@ -534,16 +568,16 @@
 
         <div class="row">
           <div class="input-field col s6">
-            <input id="dish_price" type="number" class="validate" min="1" max="20" required>
-            <label for="dish_price">Rayon de livraison (Km)</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Distance min. 1Km - max. 20Km</span>
+            <input id="delivery_area" type="number" class="validate" min="0" max="30" required>
+            <label for="delivery_area">Rayon de livraison (Km)</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Distance min. 0Km - max. 30Km</span>
           </div>
 
           <div class="input-field col s6">
-            <input id="dish_price" type="number" class="validate" min="40" max="100" required>
+            <input id="dish_price" type="number" class="validate" min="20" max="200" required>
             <label for="dish_price">Prix ($CAD)</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 40CAD - max.
-              100CAD</span>
+            <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 20CAD - max.
+              200CAD</span>
           </div>
         </div>
 
@@ -553,9 +587,8 @@
               <option value="24">24 heures</option>
               <option value="48" selected>48 heures</option>
               <option value="72">72 heures</option>
-              <option value="96">96 heures</option>
             </select>
-            <label>Délai de préparation et de livraison (en heures)</label>
+            <label>Délai de livraison (en heures)</label>
           </div>
 
         </div>
@@ -580,7 +613,7 @@
           </div>
         </div>
 
-
+        <!--
         <div class="row">
           <div class="input-field col s6">
             <p class="calendar"></p>
@@ -593,6 +626,7 @@
             <label for="service_date_end">Fin de publication</label>
           </div>
         </div>
+-->
 
       </form>
     </div>
@@ -697,13 +731,6 @@
 
 
 
-
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
   <!-- firebase -->
 
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -739,10 +766,17 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/wNumb.js"></script>
-  <script src="js/init.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/wNumb.min.js"></script>
   <script src="js/bundle.js"></script>
+  <script>
+    /* Only register a service worker if it's supported */
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('js/service-worker.js');
+    }
+
+  </script>
+  <script src="js/install.js" defer></script>
 </body>
 
 </html>

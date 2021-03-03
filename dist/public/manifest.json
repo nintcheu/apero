@@ -1,0 +1,49 @@
+{
+  "short_name": "Aperitif",
+  "name": "Aperitif",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#209CEE",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FFFFFF",
+  "shortcuts": [
+    {
+      "name": "Aperitif",
+      "short_name": "Aperitif",
+      "description": "Description - Aperitif",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/images/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "description": "Description - Aperitif",
+  "screenshots": [
+    {
+      "src": "/images/screen-540x7xx.png",
+      "type": "image/png",
+      "sizes": "540x720"
+    }
+  ]
+}
