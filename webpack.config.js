@@ -1,5 +1,7 @@
 const path = require('path');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
+
 
 module.exports = {
   mode: 'development',
@@ -16,7 +18,12 @@ module.exports = {
         test: /\.ts$/,
         use: 'ts-loader',
         include: [path.resolve(__dirname, 'src/')],
-      }
+      },
+      /*{
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+        include: [path.resolve(__dirname, 'src/')],
+      }*/
     ],
   },
   resolve: {
@@ -31,6 +38,7 @@ module.exports = {
   plugins: [
     // Other plugins...
 
+    /*
     new WorkboxPlugin.GenerateSW({
       // Do not precache images
       exclude: [/\.(?:png|jpg|jpeg|svg|js|css)$/],
@@ -54,6 +62,23 @@ module.exports = {
         },
       }]
     }),
+    */
+
+
+    // Other plugins...
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/service/sw-define.ts',
+      swDest: './../sw.js',
+      compileSrc: false,
+      additionalManifestEntries: [
+        '/',
+        'offline/',
+        'css/',
+        'js/',
+        'images/'
+      ],
+    })
   ],
+
 
 }

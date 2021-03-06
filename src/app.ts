@@ -1,65 +1,65 @@
 export default class App {
 
 
-    init(): void {
-
-    
-        M.textareaAutoResize(document.querySelector('#feedback-textarea'));
+  init(): void {
 
 
-        // -- JS : MODAL FORM PUBLISHING DISH ---
-
-       
-
-        let publishing_form_modal = document.getElementById('modal-publishing-form');
-        let publishing_form_modal_options = {};
-        publishing_form_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
-        publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
-        publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
-        publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-        M.Modal.init(publishing_form_modal, publishing_form_modal_options);
-        var publishing_form_modal_links = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
-        publishing_form_modal_links.forEach((href) => {
-            href.addEventListener("click", (e) => {
-                //console.log(e);
-                //console.log(e.target.firstChild.data);
-
-            });
-
-        });
+    M.textareaAutoResize(document.querySelector('#feedback-textarea'));
 
 
-        //------------ JS SEARCH MODAL - START
-
-        var elems_search_form = document.querySelectorAll('.autocomplete');
-        M.Autocomplete.init(elems_search_form, {
-            data: {
-                "Noix": null,
-                "arachides": null,
-                "Oeufs": null,
-                "Poissons": null,
-                "Volaille": null,
-                "Viande": null,
-                "Bleuets": 'https://placehold.it/250x250',
-                "saumon": 'https://placehold.it/250x250',
-                "thon": 'https://placehold.it/250x250',
-                "sole": 'https://placehold.it/250x250',
-                "Arachides": null,
-                "truite": null,
-                "dinde": null,
-                "agneau": null,
-                "crabe": null,
-                "homard": null,
-                "crevettes": null,
-
-            },
-            minLength: 1,
-            onAutocomplete: (txt) => {
-
-                // console.log("search-keyword: " + txt);
+    // -- JS : MODAL FORM PUBLISHING DISH ---
 
 
-                var html = `<h4>Résultat: ${txt} </h4><ul class="collection">
+
+    let publishing_form_modal = document.getElementById('modal-publishing-form');
+    let publishing_form_modal_options = {};
+    publishing_form_modal_options.onOpenStart = () => { console.log("Avant de t'ouvrir, fait ceci! ") };
+    publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
+    publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
+    publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
+    M.Modal.init(publishing_form_modal, publishing_form_modal_options);
+    var publishing_form_modal_links = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
+    publishing_form_modal_links.forEach((href) => {
+      href.addEventListener("click", (e) => {
+        //console.log(e);
+        //console.log(e.target.firstChild.data);
+
+      });
+
+    });
+
+
+    //------------ JS SEARCH MODAL - START
+
+    var elems_search_form = document.querySelectorAll('.autocomplete');
+    M.Autocomplete.init(elems_search_form, {
+      data: {
+        "Noix": null,
+        "arachides": null,
+        "Oeufs": null,
+        "Poissons": null,
+        "Volaille": null,
+        "Viande": null,
+        "Bleuets": 'https://placehold.it/250x250',
+        "saumon": 'https://placehold.it/250x250',
+        "thon": 'https://placehold.it/250x250',
+        "sole": 'https://placehold.it/250x250',
+        "Arachides": null,
+        "truite": null,
+        "dinde": null,
+        "agneau": null,
+        "crabe": null,
+        "homard": null,
+        "crevettes": null,
+
+      },
+      minLength: 1,
+      onAutocomplete: (txt) => {
+
+        // console.log("search-keyword: " + txt);
+
+
+        var html = `<h4>Résultat: ${txt} </h4><ul class="collection">
       <li class="collection-item avatar">
         <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
         <span class="title">Title</span>
@@ -93,28 +93,28 @@ export default class App {
         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
       </li>
     </ul>`;
-                var result = document.getElementById("search-result");
-                result.innerHTML = html;
+        var result = document.getElementById("search-result");
+        result.innerHTML = html;
 
-                document.body.scrollTop = 0; // For Safari
-                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-            },
-        });
+      },
+    });
 
-        //----------- SEARCH MODAL - END
-
-
-
-      
+    //----------- SEARCH MODAL - END
 
 
-  
 
 
-        //MODAL CONTROLLER MANAGER : START
 
-    
+
+
+
+
+    //MODAL CONTROLLER MANAGER : START
+
+    /*
         var modal_elems_links = document.querySelectorAll('.modal .modal-footer a');
         modal_elems_links.forEach((href) => {
 
@@ -123,7 +123,7 @@ export default class App {
                 let valueBtnClicked = e.target.firstChild.data;
 
                 console.log("modalID: " + modalID + ", valueBtnClicked: " + valueBtnClicked);
-                //console.log("_accessToken: " + _profileAccessToken);
+                console.log("_accessToken: " + _profileAccessToken);
 
                 if (currentModalID == "modal-disconnect" && valueBtnClicked == "OUI") {
 
@@ -134,10 +134,12 @@ export default class App {
             });
 
         });
-        //MODAL CONTROLLER MANAGER : END
+
+        */
+    //MODAL CONTROLLER MANAGER : END
 
 
-    }
+  }
 
 }
 

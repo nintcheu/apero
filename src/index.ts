@@ -13,9 +13,20 @@ import Chip from './component/chip';
 
 import App from './app';
 import Auth from './auth';
+import SW from './service/sw';
+
 
 
 document.addEventListener('DOMContentLoaded', (e) => {
+
+    window.onhashchange =  function(){
+        console.log("onhashchange");
+        //Header is fixed, need to slide down some to see sectionHead
+        setTimeout('scrollBy(0, -110)', 10);
+    }
+
+    let aperoSW = new SW();
+    aperoSW.init();
 
     let nav = new NavBar(document);
     nav.init();
@@ -48,12 +59,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let aperoApp = new App();
     aperoApp.init();
 
-    let auth = new Auth();
+    let auth = new Auth(modalElements.getCurrentModal() as HTMLElement);
     auth.init();
 
     const form = document.querySelector('form')!;
 
-    console.log("form: " + form);
+    //console.log("form: " + form);
 
     if (form) {
         form.addEventListener('submit', (e) => {

@@ -1,7 +1,14 @@
+
 export default class Auth {
 
+    currentModal: HTMLElement;
+
+    constructor(_modal: HTMLElement) {
+        this.currentModal = _modal;
+    }
 
     init(): void {
+        
 
         let _profileAccessToken = window.localStorage.getItem('_profileAccessToken') || null;
         let _profileDisplayName = window.localStorage.getItem('_profileDisplayName') || null;
@@ -128,8 +135,8 @@ export default class Auth {
 
                 console.log("modalID: " + modalID + ", valueBtnClicked: " + valueBtnClicked);
                 //console.log("_accessToken: " + _profileAccessToken);
-
-                if (currentModalID == "modal-disconnect" && valueBtnClicked == "OUI") {
+                //this.currentModal.getAttribute('id') == "modal-disconnect" 
+                if (valueBtnClicked == "OUI") {
 
                     firebase.auth().signOut().then((e) => {
 
