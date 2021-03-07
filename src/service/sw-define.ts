@@ -1,11 +1,12 @@
-const staticCache = 'static-cache-v1';
-const dynamicCache = 'dynamic-cache-v2';
-const defaultCacheSize = 15;
+const staticCache = 'static-cache-v0';
+const dynamicCache = 'dynamic-cache-v0';
+const defaultCacheSize = 1;
 const fallbackPage = '/fallback.html'
 const assets =
   [
     '/',
     '/index.html',
+    '/favicon.ico',
     '/fallback.html',
     '/css/style.css',
     '/css/materialize.min.css',

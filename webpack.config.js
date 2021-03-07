@@ -69,7 +69,7 @@ module.exports = {
     new WorkboxPlugin.InjectManifest({
       swSrc: './src/service/sw-define.ts',
       swDest: './../sw.js',
-      compileSrc: false,
+      compileSrc: true,
       additionalManifestEntries: [
         '/',
         'offline/',
