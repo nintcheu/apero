@@ -39,14 +39,10 @@
 }
 
 #addToHomeScreen button {
-  background-color: #264de4;
-  color: white;
-  border: 1px #2965f1 solid;
   margin: 5px 10px;
 }
 
 #instructions {
-  text-align: center;
   background-color: #f2f4f4;
   position: fixed;
   bottom: 0px;
@@ -66,7 +62,4 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color:#264de4;
-  color: white;
-  border: 1px #2965f1 solid;
 }

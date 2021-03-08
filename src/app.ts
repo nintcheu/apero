@@ -174,7 +174,7 @@ export default class App {
       if (instructionBtn) {
         instructionBtn.addEventListener('click', () => {
           console.log("clicked on instructionBtn");
-          this.installApp(installEvt);
+          this.hideInstructions();
         });
       }
       console.log("platform ", navigator.platform);
@@ -184,7 +184,7 @@ export default class App {
 
       if (this.pwaSupport) {
         let p = navigator.platform;
-        if (p === 'iPhone' || p === 'iPad' || p === 'iPod' || p === 'MacIntel') {
+        if (p === 'iPhone' || p === 'iPad' || p === 'iPod') {
           if (!navigator.standalone) {
             let lastShow: number = parseInt(localStorage.getItem('lastShow'));
             let now: number = new Date().getTime();
