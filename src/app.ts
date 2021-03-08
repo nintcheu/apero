@@ -1,5 +1,9 @@
 export default class App {
+  pwaSupport: boolean = false;
 
+  constructor(pwa: boolean) {
+    this.pwaSupport = pwa;
+  }
 
   init(): void {
 
@@ -93,7 +97,7 @@ export default class App {
         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
       </li>
     </ul>`;
-        var result = document.getElementById("search-result");
+        let result = document.getElementById("search-result") as HTMLElement;
         result.innerHTML = html;
 
         document.body.scrollTop = 0; // For Safari
@@ -139,7 +143,104 @@ export default class App {
     //MODAL CONTROLLER MANAGER : END
 
 
+
+
   }
+
+  initInstallFeature(): void {
+    let installEvt: Event;
+
+    window.onload = () => {
+
+      let noAppInstallBtn = document.getElementById('noAppInstallBtn') as HTMLElement;
+
+      if (noAppInstallBtn) {
+        noAppInstallBtn.addEventListener('click', () => {
+          console.log("clicked on noAppInstall");
+          this.hidePrompt()
+        });
+      }
+
+      let yesAppInstallBtn = document.getElementById('yesAppInstallBtn') as HTMLElement;
+      if (yesAppInstallBtn) {
+        yesAppInstallBtn.addEventListener('click', () => {
+          console.log("clicked on yesAppInstall");
+          this.installApp(installEvt);
+        });
+      }
+
+      let instructionBtn = document.getElementById('instructionsCloseBtn') as HTMLElement;
+
+      if (instructionBtn) {
+        instructionBtn.addEventListener('click', () => {
+          console.log("clicked on instructionBtn");
+          this.installApp(installEvt);
+        });
+      }
+      console.log("platform ", navigator.platform);
+      console.log("pwaSupport ", this.pwaSupport);
+
+      console.log("navigator ", navigator);
+
+      if (this.pwaSupport) {
+        let p = navigator.platform;
+        if (p === 'iPhone' || p === 'iPad' || p === 'iPod' || p === 'MacIntel') {
+          if (!navigator.standalone) {
+            let lastShow: number = parseInt(localStorage.getItem('lastShow'));
+            let now: number = new Date().getTime();
+
+            if (isNaN(lastShow) || (lastShow + 1000 * 60 * 24 * 7) <= now) {
+              let instBtn = document.getElementById('instructions') as HTMLElement;
+              instBtn.style.display = 'block';
+              localStorage.setItem('lastShow', now.toString());
+
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener('beforeinstallprompt', (evt) => {
+      console.log("Before Install Prompt");
+      installEvt = evt;
+      evt.preventDefault();
+      let addToHome = document.getElementById('addToHomeScreen') as HTMLElement;
+      addToHome.style.display = 'block'
+    });
+
+    window.addEventListener('appinstalled', (evt) => {
+      console.log(" app installed event");
+    });
+
+
+  }
+
+  installApp(installEvt: Event): void {
+    this.hidePrompt();
+    installEvt.prompt();
+    installEvt.userChoice.then((result) => {
+
+      if (result.outcome === 'accepted') {
+        console.log(" App Installed ");
+      } else {
+        console.log(" App not installed ");
+      }
+
+    });
+  }
+
+  hidePrompt(): void {
+    let addToHome = document.getElementById('addToHomeScreen') as HTMLElement;
+    addToHome.style.display = 'none';
+
+  }
+
+
+  hideInstructions(): void {
+    let instBtn = document.getElementById('instructions') as HTMLElement;
+    instBtn.style.display = 'none';
+  }
+
 
 }
 

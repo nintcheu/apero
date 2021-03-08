@@ -56,8 +56,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
     floatMenuBtn.init();
     floatMenuBtn.addListener();
 
-    let aperoApp = new App();
+    let aperoApp = new App(aperoSW.isPwaSupported());
     aperoApp.init();
+    aperoApp.initInstallFeature();
 
     let auth = new Auth(modalElements.getCurrentModal() as HTMLElement);
     auth.init();

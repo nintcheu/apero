@@ -37,11 +37,11 @@ const limitCacheSize = (name, size) => {
 };
 
 self.addEventListener('install', (event) => {
-  console.log('sw installed ', event);
+  //console.log('sw installed ', event);
 
   event.waitUntil(
     caches.open(staticCache).then((cache) => {
-      console.log('Adding static files to cache', cache);
+      //console.log('Adding static files to cache', cache);
       return cache.addAll(assets);
     })
   );
@@ -49,7 +49,7 @@ self.addEventListener('install', (event) => {
 
 
 self.addEventListener('activate', (event) => {
-  console.log('sw activated');
+  //console.log('sw activated');
 
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -63,7 +63,7 @@ self.addEventListener('activate', (event) => {
 
 // fetch events
 self.addEventListener('fetch', evt => {
-  //if(evt.request.url.indexOf('googletagmanager.com') === -1){
+  if(evt.request.url.indexOf('googletagmanager.com') === -1){
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
@@ -80,5 +80,7 @@ self.addEventListener('fetch', evt => {
         } 
       })
     );
-  //}
+  }
 });
+
+

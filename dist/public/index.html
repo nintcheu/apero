@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<!-- [if lt EF 7]>  <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif] -->
+<!-- [if EF 7]>     <html class="no-js lt-ie9 lt-ie8"  lang="fr"> <![endif] -->
+<!-- [if EF 8]>     <html class="no-js lt-ie9"  lang="fr"> <![endif] -->
+<!-- [if gt EI 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif] -->
+
+
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <meta name="theme-color" content="#FFFFFF" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Apero progressive web app" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 
-  <title>Aperitif - Commercialiser votre savoir-faire culinaire</title>
 
   <!-- CSS  -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen" />
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="manifest" href="manifest.json">
-
+  <title>Apéro - Commercialiser votre savoir-faire culinaire</title>
 </head>
 
 <body>
   <nav class="light-blue lighten-1">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Aperitif</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Apéro</a>
 
       <ul id="nav-mobile" class="sidenav">
         <li>
@@ -60,9 +68,10 @@
         </li>
         <li><a class="subheader"></a></li>
         <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
-        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-ordered-dishes">Mes commandes</a></li>
-        <li><a class="waves-effect" href="./about.html">About</a></li>
-        <li><a class="waves-effect" href="./faq.html">Faq</a></li>
+        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-ordered-dishes">Mes commandes</a>
+        </li>
+        <li><a class="waves-effect" href="about.html">About</a></li>
+        <li><a class="waves-effect" href="faq.html">Faq</a></li>
 
         <li><a class="waves-effect small" href="#!"><i class="material-icons small">live_help</i>Aide</a></li>
         <li><a class="modal-trigger" href="#!" data-target="modal-feedback-form"><i
@@ -76,13 +85,28 @@
 
   <div class="container">
 
-      <!-- Install button, hidden by default -->
-<section id="addToHomeScreen">
-  <h1>Install App</h1>
-  <img src="images/android-chrome-192x192.png" alt="install App"/>
-  Add our app to your home screen 
+    <div id="instructions">
+      <button id="instructionsCloseBtn">X</button>
+      <p>
+        <img src="images/apple-touch-icon.png" alt="icon" />
+      </p>
+      <p>
+        Install our app on your Home Screen for Quick Access
+      </p>
+      <p>
+        Tap <img alt="share" src="https://dummyimage.com/64x32" /> then <img src="https://dummyimage.com/64x32"
+          alt="Add to Home Screen" />
+      </p>
+    </div>
 
-</section>
+
+    <!-- Install button, hidden by default -->
+    <section id="addToHomeScreen">
+      <img src="images/android-chrome-192x192.png" alt="apero App" />
+      Add our app to your home screen ? <br />
+      <a href="javascript:void(0)" id="noAppInstallBtn" style="text-decoration:none;">No, Thanks</a>
+      <button id="yesAppInstallBtn">Yes, Please!</button>
+    </section>
     <div class="row">
       <div id="search-result"></div>
     </div>

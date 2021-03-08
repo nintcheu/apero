@@ -17,23 +17,56 @@
   display: none;
 }
 
-
-
 .hidden {
   display: none !important;
 }
 
-#installContainer {
-  position: absolute;
-  bottom: 1em;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+#addToHomeScreen{
+  text-align: center;
+  background-color: #f2f4f4;
+  min-height: 100px;
+  display: block;
+  margin-top: 20px;
+  padding: 0px;
+  display: none;
+
 }
 
-#installContainer button {
-  background-color: inherit;
-  border: 1px solid;
-  font-size: 1em;
-  padding: 0.75em;
+#addToHomeScreen img {
+  max-width: 57px;
+  margin: 10px;
+  float: left;
+}
+
+#addToHomeScreen button {
+  background-color: #264de4;
+  color: white;
+  border: 1px #2965f1 solid;
+  margin: 5px 10px;
+}
+
+#instructions {
+  text-align: center;
+  background-color: #f2f4f4;
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  left: 20px;
+  width: calc(100%-40px);
+  padding: 0px 10px 10px 10px;
+  display: none;
+  z-index: 1;
+}
+
+#instructions img {
+  max-width: 64px;
+}
+
+#instructions button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color:#264de4;
+  color: white;
+  border: 1px #2965f1 solid;
 }
