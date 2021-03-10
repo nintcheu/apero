@@ -1,11 +1,11 @@
 {
-  "short_name": "Abéro",
-  "name": "Abéro",
+  "short_name": "Apéro",
+  "name": "Apéro",
   "start_url": "/index.html",
   "background_color": "#209CEE",
   "display": "standalone",
   "theme_color": "#FFFFFF",
-  "description": "Description - Abéro",
+  "description": "Description - Apéro",
   "icons": [
     {
       "src": "/images/android-chrome-192x192.png",

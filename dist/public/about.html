@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <meta name="theme-color" content="#FFFFFF" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Abéro progressive web app" />
+  <meta name="description" content="Apéro progressive web app" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -25,13 +25,13 @@
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen" />
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
   <link rel="manifest" href="manifest.json">
-  <title>Abéro - Commercialiser votre savoir-faire culinaire</title>
+  <title>Apéro - Commercialiser votre savoir-faire culinaire</title>
 </head>
 
 
 <body>
   <nav class="light-blue lighten-1">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Abéro</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Apéro</a>
 
       <ul id="nav-mobile" class="sidenav">
         <li>
@@ -79,13 +79,30 @@
 
   <div class="container">
 
+    <div id="instructions">
+      <button class="btn" id="instructionsCloseBtn">X</button>
+      <p>
+        <img src="images/apple-touch-icon.png" alt="icon" />
+      </p>
+      <p>
+        Install our app on your home screen for quick access
+      </p>
+      <p>
+        Tap <a class="pulse" href="#!" ><i class="small material-icons">open_in_browser</i></a> 
+        then <a href="#!"><i class="small material-icons">add_box</i></a>
+      </p>
+    </div>
+
+
     <!-- Install button, hidden by default -->
     <section id="addToHomeScreen">
-      <h1>Install App</h1>
-      <img src="images/android-chrome-192x192.png" alt="install App" />
-      Add our app to your home screen
-
+      <img src="images/android-chrome-192x192.png" alt="Apéro App" />
+      Add our app to your home screen ? <br />
+      <a href="javascript:void(0)" id="noAppInstallBtn" style="text-decoration:none;">No, Thanks</a>
+      <button class="btn" id="yesAppInstallBtn">Yes, Please!</button>
     </section>
+
+
     <div class="row">
       <div id="search-result"></div>
     </div>
@@ -154,7 +171,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Abéro</h5>
+          <h5 class="white-text">Apéro</h5>
           <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits
             maison!".
             Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
@@ -501,7 +518,7 @@
 
           <div class="input-field col s12">
             <select name="categories" multiple required>
-              <option value="Abéro">Abéro</option>
+              <option value="Apero">Apéro</option>
               <option value="dessert">Dessert</option>
               <option value="petite-bouchee">Petite bouchée</option>
               <option value="autre">Autre</option>
