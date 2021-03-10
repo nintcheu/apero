@@ -19,8 +19,11 @@ const assets =
     '/images/apple-touch-icon.png',
     '/images/screen-540x7xx.png',
     '/js/bundle.js',
+    '/js/materialize.min.js',
+    '/js/wNumb.min.js',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://dummyimage.com/150x150',
+    'https://dummyimage.com/300x250',
     'https://materializecss.com/images/office.jpg',
   ];
 
@@ -68,7 +71,12 @@ self.addEventListener('fetch', evt => {
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
           return caches.open(dynamicCache).then(cache => {
-            cache.put(evt.request.url, fetchRes.clone());
+
+            if(fetchRes instanceof Response){
+              cache.put(evt.request.url, fetchRes.clone());
+            }else{
+              console.log("fetchRes: ", fetchRes);
+            }
             // check cached items size
             limitCacheSize(dynamicCache, defaultCacheSize);
             return fetchRes;
