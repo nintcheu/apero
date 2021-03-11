@@ -1,10 +1,15 @@
+import * as firebaseui from './../node_modules/firebaseui';
+import firebaseauth from './../node_modules/firebase/auth';
+import firebase from './../node_modules/firebase/app';
 
 export default class Auth {
 
     currentModal: HTMLElement;
+    firebase: any;
 
-    constructor(_modal: HTMLElement) {
+    constructor(appfirebase: any, _modal: HTMLElement) {
         this.currentModal = _modal;
+        this.firebase  = appfirebase;
     }
 
     init(): void {
@@ -20,8 +25,6 @@ export default class Auth {
         });
 
         console.log("_profileAccessToken: " + _profileAccessToken);
-
-
 
 
         if (_profileAccessToken) {
@@ -43,7 +46,7 @@ export default class Auth {
         // firebase auth 
 
         // Initialize the FirebaseUI Widget using Firebase.
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        let ui = new firebaseui.auth.AuthUI(this.firebase.auth());
 
         var uiConfig = {
             callbacks: {
@@ -138,7 +141,7 @@ export default class Auth {
                 //this.currentModal.getAttribute('id') == "modal-disconnect" 
                 if (valueBtnClicked == "OUI") {
 
-                    firebase.auth().signOut().then((e) => {
+                    this.firebase.auth().signOut().then((e) => {
 
                         console.log("sign-out" + e);
 

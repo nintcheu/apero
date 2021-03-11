@@ -28,7 +28,7 @@ const assets =
 
 
 // cache size limit function
-const limitCacheSize = (name, size) => {
+const limitCacheSize = (name: string, size: number) => {
   caches.open(name).then(cache => {
     cache.keys().then(keys => {
       if (keys.length > size) {
@@ -64,14 +64,14 @@ self.addEventListener('activate', (event) => {
 
 
 // fetch events
-self.addEventListener('fetch', evt => {
-  if(evt.request.url.indexOf('googletagmanager.com') === -1){
+self.addEventListener('fetch', (evt: Event) => {
+  //if(evt.request.url.indexOf('googletagmanager.com') === -1){
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
           return caches.open(dynamicCache).then(cache => {
 
-            if(fetchRes instanceof Response){
+            if(fetchRes instanceof Response  && fetchRes.status  == 200){
               cache.put(evt.request.url, fetchRes.clone());
             }else{
               console.log("fetchRes: ", fetchRes);
@@ -87,7 +87,7 @@ self.addEventListener('fetch', evt => {
         } 
       })
     );
-  }
+  //}
 });
 
 
