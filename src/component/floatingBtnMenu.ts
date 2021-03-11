@@ -3,14 +3,17 @@ export default class FloatingBtnMenu {
 
     elems_fixed_btn : NodeListOf<HTMLElement>;
     doc: Document;
+    M: any;
 
-    constructor(doc: Document) {
+
+    constructor(doc: Document,  m:any) {
         this.doc = doc;
         this.elems_fixed_btn = doc.querySelectorAll('.fixed-action-btn');
+        this.M = m;
     }
 
     init(): void {
-        M.FloatingActionButton.init(this.elems_fixed_btn, {});
+        this.M.FloatingActionButton.init(this.elems_fixed_btn, {});
     }
 
 
@@ -22,7 +25,7 @@ export default class FloatingBtnMenu {
 
                 console.log("_profileAccessToken: " + window.localStorage.getItem('_profileAccessToken'));
                 //console.log(e);
-                console.log("btnClicked: " + e.target.firstChild.data);
+                //console.log("btnClicked: " + e.target.firstChild.data);
 
             });
 

@@ -8,6 +8,7 @@ import Modal from './component/modal';
 import DatePicker from './component/datePicker';
 import FloatingBtnMenu from './component/floatingBtnMenu';
 import Chip from './component/chip';
+import M from './../node_modules/materialize-css';
 
 
 
@@ -28,35 +29,35 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let aperoSW = new SW();
     aperoSW.init();
 
-    let nav = new NavBar(document);
+    let nav = new NavBar(document, M);
     nav.init();
 
-    let TooltipElements = new Tooltip(document);
+    let TooltipElements = new Tooltip(document, M);
     TooltipElements.init();
 
-    let selectElements = new Select(document);
+    let selectElements = new Select(document, M);
     selectElements.init();
 
-    let tabElements = new Tab(document);
+    let tabElements = new Tab(document, M);
     tabElements.init();
 
-    let modalElements = new Modal(document);
+    let modalElements = new Modal(document,  M);
     modalElements.init();
 
-    let carouselElements = new Carousel(document);
+    let carouselElements = new Carousel(document, M);
     carouselElements.init();
 
-    let datePickerElements = new DatePicker(document);
+    let datePickerElements = new DatePicker(document, M);
     datePickerElements.init();
 
-    let chipElements = new Chip(document);
+    let chipElements = new Chip(document, M);
     chipElements.init();
 
-    let floatMenuBtn = new FloatingBtnMenu(document);
+    let floatMenuBtn = new FloatingBtnMenu(document, M);
     floatMenuBtn.init();
     floatMenuBtn.addListener();
 
-    let aperoApp = new App(aperoSW.isPwaSupported());
+    let aperoApp = new App(aperoSW.isPwaSupported(), M);
     aperoApp.init();
     aperoApp.initInstallFeature();
 

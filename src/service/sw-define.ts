@@ -19,7 +19,6 @@ const assets =
     '/images/apple-touch-icon.png',
     '/images/screen-540x7xx.png',
     '/js/bundle.js',
-    '/js/materialize.min.js',
     '/js/wNumb.min.js',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://dummyimage.com/150x150',

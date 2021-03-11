@@ -1,13 +1,16 @@
 export default class Tab {
 
     elems_tab: NodeListOf<HTMLElement>;
+    M: any;
 
-    constructor(doc: Document) {
+
+    constructor(doc: Document,  m: any) {
         this.elems_tab = doc.querySelectorAll('.tabs');
+        this.M = m;
     }
 
     init(): void {
-        M.Tabs.init(this.elems_tab, {});
+        this.M.Tabs.init(this.elems_tab, {});
     }
 
 }

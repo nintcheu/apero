@@ -2,10 +2,13 @@ export default class Modal {
 
     elems_modal: NodeListOf<HTMLElement>;
     currentModal: HTMLElement | undefined;
+    M: any;
 
-    constructor(doc: Document) {
+
+    constructor(doc: Document,  m:any) {
         this.elems_modal = doc.querySelectorAll('.modal');
         this.currentModal = undefined;
+        this.M = m;
     }
 
     getCurrentModal(): HTMLElement | undefined {
@@ -57,7 +60,7 @@ export default class Modal {
             }
         };
 
-       M.Modal.init(this.elems_modal, options_modal);
+       this.M.Modal.init(this.elems_modal, options_modal);
     }
 
 }

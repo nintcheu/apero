@@ -1,14 +1,17 @@
+
 export default class App {
   pwaSupport: boolean = false;
+  M: any;
 
-  constructor(pwa: boolean) {
+  constructor(pwa: boolean, M: any) {
     this.pwaSupport = pwa;
+    this.M = M;
   }
 
   init(): void {
 
-
-    M.textareaAutoResize(document.querySelector('#feedback-textarea'));
+  
+    this.M.textareaAutoResize(document.querySelector('#feedback-textarea'));
 
 
     // -- JS : MODAL FORM PUBLISHING DISH ---
@@ -21,7 +24,8 @@ export default class App {
     publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
     publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
     publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-    M.Modal.init(publishing_form_modal, publishing_form_modal_options);
+    
+    this.M.Modal.init(publishing_form_modal, publishing_form_modal_options);
     var publishing_form_modal_links = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
     publishing_form_modal_links.forEach((href) => {
       href.addEventListener("click", (e) => {
@@ -36,7 +40,7 @@ export default class App {
     //------------ JS SEARCH MODAL - START
 
     var elems_search_form = document.querySelectorAll('.autocomplete');
-    M.Autocomplete.init(elems_search_form, {
+    this.M.Autocomplete.init(elems_search_form, {
       data: {
         "Noix": null,
         "arachides": null,
