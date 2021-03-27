@@ -71,7 +71,7 @@ self.addEventListener('fetch', (evt: Event) => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
           return caches.open(dynamicCache).then(cache => {
 
-            if(fetchRes instanceof Response  && fetchRes.status  == 200){
+            if((fetchRes instanceof Response) && (200 === fetchRes.status)){
               cache.put(evt.request.url, fetchRes.clone());
             }else{
               console.log("fetchRes: ", fetchRes);
@@ -91,3 +91,25 @@ self.addEventListener('fetch', (evt: Event) => {
 });
 
 
+self.addEventListener('push', function(e) {
+  var options = {
+    body: 'This notification was generated from a push! for apéro',
+    //icon: 'images/example.png',
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: '2'
+    },
+    actions: [
+      {action: 'explore', title: 'Explore this new world',
+        //icon: 'images/checkmark.png'
+      },
+      {action: 'close', title: 'Close',
+        //icon: 'images/xmark.png'
+      },
+    ]
+  };
+  e.waitUntil(
+    self.registration.showNotification('Hello world!', options)
+  );
+});
