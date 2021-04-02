@@ -14,11 +14,9 @@ import "./../node_modules/firebase/messaging";
 
 
 import App from './app';
+import NotificationCS from './notification';
 import Auth from './auth';
 import AppSW from './service/sw';
-import NotificationCS from './service/notification';
-
-
 
 
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         //Header is fixed, need to slide down some to see sectionHead
         setTimeout(() => {
             scrollBy(0, -110);
-            //console.log("...scrollBy 0,-110");
+            console.log("...scrollBy 0,-110");
         }, 10);
 
     }
@@ -76,8 +74,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     let auth = new Auth(firebase.initializeApp(firebaseConfig), modalElements.getCurrentModal() as HTMLElement);
     auth.init();
+    
 
-    let aperoSW = new AppSW(new NotificationCS(apiKeyMessaging,  firebase.messaging()));
+    let aperoSW = new AppSW();
+
     let aperoApp = new App(aperoSW.isPwaSupported(), M);
     aperoApp.init();
     aperoApp.initInstallFeature();
@@ -97,4 +97,45 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 
 
+
+
+    function displayNotification() {
+
+      }
+
+
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here. Other Firebase libraries
+// are not available in the service worker.
+
+
+const messaging = firebase.messaging();
+
+messaging.requestPermission().then(()=> {
+    console.log("Have permission");
+    return  messaging.getToken();
+
+}).then( (token) =>{
+
+    console.log(token);
+
+}).catch((err)=> {
+    console.log("Error Occured", err);
+});
+
+
+let notificationCS = new NotificationCS();
+
+// [START messaging_receive_message]
+// Handle incoming messages. Called when:
+// - a message is received while the app has focus
+// - the user clicks on an app notification created by a service worker
+//   `messaging.onBackgroundMessage` handler.
+messaging.onMessage((payload) => {
+    console.log('onMessage', payload);
+    let option = notificationCS.getOptions(payload.notification.title);
+    notificationCS.notify(payload.notification.title, option);
+  });
+  // [END messaging_receive_message]
+  
 });

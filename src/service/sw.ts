@@ -1,11 +1,8 @@
 export default class AppSW {
 
     pwaSupport: boolean = false;
-    notificationSC: any;
 
-
-    constructor(_notificationService: any) {
-        this.notificationSC = _notificationService;
+    constructor() {
         this.init();
     }
 
@@ -17,15 +14,26 @@ export default class AppSW {
             navigator.serviceWorker.register('sw.js').then((reg) => {
 
                 // registration worked
-               // console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
+                // console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
 
-                    this.notificationSC.notify("Bienvenue sur la plateforme Apéro!!!");
-                
 
             }).catch((error) => {
                 // registration failed
                 console.log('Registration failed with ' + error);
             });
+
+
+            navigator.serviceWorker.register('firebase-messaging-sw.js').then((reg) => {
+
+                // registration worked
+                // console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
+
+
+            }).catch((error) => {
+                // registration failed
+                console.log('Registration failed with ' + error);
+            });
+
 
 
         } else {
@@ -38,10 +46,6 @@ export default class AppSW {
     isPwaSupported(): boolean {
         return this.pwaSupport;
     }
-
-   
-
-
 
 
 }

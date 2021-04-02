@@ -1,3 +1,4 @@
+
 const staticCache = 'static-cache-v0';
 const dynamicCache = 'dynamic-cache-v0';
 const defaultCacheSize = 1;
@@ -25,20 +26,6 @@ const assets =
     'https://dummyimage.com/300x250',
     'https://materializecss.com/images/office.jpg',
   ];
-
-
-  function base64ToArray(base64String) {
-    var padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-    var base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
-    var rawData = btoa(base64);
-    var outputArray = new Uint8Array(rawData.length);
-    for (var i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-    }
-    return outputArray;
-}
 
 // cache size limit function
 const limitCacheSize = (name: string, size: number) => {
@@ -160,3 +147,8 @@ self.addEventListener('push', function (e) {
     self.registration.showNotification('Hello world!', options)
   );
 });
+
+
+
+
+
