@@ -1,0 +1,769 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Apéro progressive web app" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+
+  <!-- CSS  -->
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
+  <link rel="manifest" href="manifest.json">
+  <title>Apéro - Commercialiser votre savoir-faire culinaire</title>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Apéro</a>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li>
+          <div id="firebaseui-auth-container">
+            <div class="progress" style="display:none">
+              <div class="indeterminate"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="user-view">
+            <div class="background" id="profileBackground" style="display:none;">
+              <!-- <img src="https://dummyimage.com/1000x750"> -->
+              <img alt="" src="https://materializecss.com/images/office.jpg">
+            </div>
+
+            <a href="#user" id="profilePhoto">
+              <img style="display:none" alt="" class="circle" width="150" height="150"
+                src="https://dummyimage.com/150x150">
+            </a>
+
+            <a href="#name"><span class="white-text name" id="profileDisplayName"></span></a>
+            <a href="#email"><span class="white-text email" id="profileEmail"></span></a>
+          </div>
+        </li>
+        <li>
+          <a href="#!" id="disconnectLink" style="display:none" class="modal-trigger" data-target="modal-disconnect"><i
+              class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="subheader"></a></li>
+        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-posted-dishes">Mes plats</a></li>
+        <li><a class="waves-effect modal-trigger granted" href="#!" data-target="modal-ordered-dishes">Mes commandes</a>
+        </li>
+        <li><a class="waves-effect" href="about.html">About</a></li>
+        <li><a class="waves-effect" href="faq.html">Faq</a></li>
+
+        <li><a class="waves-effect small" href="#!"><i class="material-icons small">live_help</i>Aide</a></li>
+        <li><a class="modal-trigger" href="#!" data-target="modal-feedback-form"><i
+              class="material-icons small">feedback</i>Feedback</a></li>
+
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div id="instructions">
+      <button class="btn" id="instructionsCloseBtn">X</button>
+      <p>
+        <img src="images/apple-touch-icon.png" alt="icon" />
+      </p>
+      <p>
+        Install our app on your home screen for quick access
+      </p>
+      <p>
+        Tap <a class="pulse" href="#!" ><i class="small material-icons">open_in_browser</i></a> 
+        then <a href="#!"><i class="small material-icons">add_box</i></a>
+      </p>
+    </div>
+
+
+    <!-- Install button, hidden by default -->
+    <section id="addToHomeScreen">
+      <img src="images/android-chrome-192x192.png" alt="Apéro App" />
+      Add our app to your home screen ? <br />
+      <a href="javascript:void(0)" id="noAppInstallBtn" style="text-decoration:none;">No, Thanks</a>
+      <button class="btn" id="yesAppInstallBtn">Yes, Please!</button>
+    </section>
+
+    <div class="row">
+      <div id="search-result"></div>
+    </div>
+  </div>
+
+
+  <div class="section no-pad-bot" id="index-banner">
+
+    <div class="container">
+      <div class="row center">
+
+        <h4>Page détail du plat</h4>
+     
+      </div>
+    </div>
+
+    <div class="container">
+      <br><br>
+      <div class="row center">
+        <a href="#!" id="download-button" class="btn-large waves-effect waves-light orange">Consulter les plats</a>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+              <h5 class="center">Elargissez votre réseau de clients</h5>
+
+              <p class="light">By utilizing elements and principles of Material Design, we were able to create a
+                framework
+                that incorporates components and animations that provide more feedback to users. Additionally, a single
+                underlying responsive system across all platforms allow for a more unified user experience.</p>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+              <h5 class="center">Protégez-vous en cas de litiges clients</h5>
+
+              <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate
+                our
+                custom components. Additionally, we refined animations and transitions to provide a smoother experience
+                for developers.</p>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+              <h5 class="center">Concentrez-vous sur votre savoir-faire</h5>
+
+              <p class="light">We have provided detailed documentation as well as specific code examples to help new
+                users
+                get started. We are also always open to feedback and can answer any questions a user may have about
+                Materialize.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
+
+  </div>
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Apéro</h5>
+          <p class="grey-text text-lighten-4">est une plateforme ouverte pour les passionnés de "bons plats faits
+            maison!".
+            Disposez-vous d'un savoir-faire culinaire qui est apprécié par votre famille et vos ami(e)s ?<br />
+            Avez-vous déjà envisagé de commercialiser ce talent de façon occasionnel et ainsi générer un revenu
+            passif?<br />
+            Tout ce dont vous avez besoin, c'est <strong>"PUBLIER GRATUITEMENT"</strong> votre meilleur plat sur notre
+            plateforme avec votre
+            honoraire de service, puis d'accepter à votre convenance les ordres de commande.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <!-- Made by <a class="orange-text text-lighten-3" href="#!">Materialize</a>-->
+      </div>
+    </div>
+  </footer>
+
+  <!-- FIXED FLOATING BTN MENU : START -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large light-blue">
+      <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red modal-trigger pulse" href="#!" data-target="modal-publishing-form"><i
+            class="large material-icons">add_circle</i></a></li>
+
+      <li><a class="btn-floating yellow darken-1 sidenav-trigger" href="#!" data-target="nav-mobile"><i
+            class="large material-icons">person</i></a></li>
+
+      <li><a class="btn-floating green modal-trigger" href="#modal-notifications"><i
+            class="material-icons">notifications</i></a></li>
+      <li><a class="btn-floating blue modal-trigger" href="#!" data-target="modal-search"><i
+            class="material-icons">search</i></a></li>
+    </ul>
+  </div>
+  <!-- FIXED FLOATING BTN MENU : END -->
+
+
+
+  <!-- MODAL - MY ORDERS DISHES : START -->
+  <div id="modal-ordered-dishes" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+
+    <div class="modal-content">
+      <h4>Mes commandes</h4>
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#test1">En attente</a></li>
+            <li class="tab col s3"><a class="active" href="#test2">A payer</a></li>
+            <li class="tab col s3"><a href="#test3">En cuisine</a></li>
+            <li class="tab col s3"><a href="#test4">Livré</a></li>
+
+          </ul>
+        </div>
+        <div id="test1" class="col s12">
+
+          <small>En attente d'acceptation par le fournisseur</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Prix</th>
+                <th>Date d'enregistrement</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Toffu aux amandes</td>
+                <td>$0.87</td>
+                <td>10 janv 2020, PM</td>
+
+              </tr>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>$3.76</td>
+                <td>10 janv 2020, PM</td>
+
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>$7.00</td>
+                <td>10 janv 2020, PM</td>
+
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="test2" class="col s12">
+
+          <small>Accepté par le fournisseur. En attente de votre paiement.</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Prix</th>
+                <th>Date livraison</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>$10.00</td>
+                <td>10 janv 2020, PM</td>
+
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>$5.00</td>
+                <td>20 dec 2019, AM</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="test3" class="col s12">
+          <small>Paiement reçu! En cours de préparation par le fournisseur.</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Date livraison</th>
+                <th>Payé</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+                <td>10 janv 2020, PM</td>
+                <td>$13.76</td>
+
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>20 dec 2019, AM</td>
+                <td>$12.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="test4" class="col s12">
+          <small>Plats livrés</small>
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Plat</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Beignets au chocolat</td>
+
+                <td>10 janv 2020, PM</td>
+              </tr>
+              <tr>
+                <td>Gâteau au yaourt</td>
+                <td>20 dec 2019, AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Quitter</a>
+    </div>
+  </div>
+  <!-- MODAL - MY ORDERS DISHES : END -->
+
+  <!-- MODAL - MY POSTED DISHED : START -->
+  <div id="modal-posted-dishes" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+
+    <div class="modal-content">
+      <h4>Mes plats publiés</h4>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Plat</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Toffu aux amandes</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Beignets au chocolat</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Gâteau au yaourt</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Quitter</a>
+    </div>
+  </div>
+  <!-- MODAL - MY POSTED DISHED : END -->
+
+
+  <!-- MODAL CONDITIONS AGREEMENT : START -->
+  <div id="modal-conditions-agreement" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Conditions d'utilisation</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  <!-- MODAL CONDITIONS AGREEMENT : END -->
+
+
+  <!-- MODAL FEEDBACK FORM: START -->
+  <div id="modal-feedback-form" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Votre opinion compte!</h4>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="companyP" type="text" class="validate">
+              <label for="companyP">Entreprise ou Personne</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="feedback-textarea" class="materialize-textarea"></textarea>
+              <label for="feedback-textarea">Votre message</label>
+            </div>
+          </div>
+        </form>
+        <br>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">RESET</a>
+      <button class="btn waves-effect waves-light modal-trigger" type="submit" name="action"
+        data-target="modal-conditions-agreement">Soumettre
+      </button>
+    </div>
+  </div>
+  <!-- MODAL FEEDBACK FORM : END -->
+
+
+
+  <!-- MODAL PULISHING FORM DISH : START -->
+  <div id="modal-publishing-form" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Publier un plat</h4>
+
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="dish" type="text" class="validate">
+            <label for="dish">Intitulé du plat</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+
+          <div class="input-field col s12">
+            <select name="categories" multiple required>
+              <option value="Apéro">Apéro</option>
+              <option value="dessert">Dessert</option>
+              <option value="petite-bouchee">Petite bouchée</option>
+              <option value="autre">Autre</option>
+            </select>
+            <label>Ca†égorie(s) du plat</label>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <!--<i class="material-icons prefix tooltipped"
+              data-tooltip="Saisir un aliment puis appuyer sur la touche entrée au clavier"
+              data-position="right">help</i>-->
+
+            <!-- Customizable input  -->
+
+            <span class="dish_content-text">Saisir un ingrédient puis appuyer sur "ENTRER"</span>
+
+            <div class="chips">
+              <input id="dish_content" class="custom-class" required>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>3 Photos du plat</span>
+            <input type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="delivery_area" type="number" class="validate" min="0" max="30" required>
+            <label for="delivery_area">Rayon de livraison (Km)</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Distance min. 0Km - max. 30Km</span>
+          </div>
+
+          <div class="input-field col s6">
+            <input id="dish_price" type="number" class="validate" min="20" max="200" required>
+            <label for="dish_price">Prix ($CAD)</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Transaction min. 20CAD - max.
+              200CAD</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <select name="delivered_delay">
+              <option value="24">24 heures</option>
+              <option value="48" selected>48 heures</option>
+              <option value="72">72 heures</option>
+            </select>
+            <label>Délai de livraison (en heures)</label>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="service_zipcode" class="validate" minlength="3" maxlength="6"
+              pattern="[a-zA-Z0-9]{3,6}" required>
+            <label for="service_zipcode">Votre code postal</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input type="text" id="service_city" class="validate" required>
+            <label for="service_city">Votre ville</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="company" type="text" class="validate">
+            <label for="company">Le nom de votre entreprise ou votre nom</label>
+          </div>
+        </div>
+
+        <!--
+        <div class="row">
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker validate" id="service_date_start">
+            <label for="service_date_start">Publier à partir du...</label>
+          </div>
+          <div class="input-field col s6">
+            <p class="calendar"></p>
+            <input type="text" class="datepicker validate" id="service_date_end">
+            <label for="service_date_end">Fin de publication</label>
+          </div>
+        </div>
+-->
+
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Effacer</a>
+      <button class="btn waves-effect waves-light pulse modal-trigger red" type="submit" name="action"
+        data-target="modal-conditions-agreement">publier le plat
+      </button>
+    </div>
+  </div>
+  <!-- MODAL PULISHING FORM DISH : END -->
+
+  <!-- MODALE DISCONNECT : DEBUT -->
+  <div id="modal-disconnect" class="modal modal-fixed-footer scale-transition scale-in scale-out">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+      <h4>Déconnexion</h4>
+      <p>Voulez-vous nous quitter ?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">NON</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OUI</a>
+
+    </div>
+  </div>
+  <!-- MODAL DISCONNECT : FIN -->
+
+  <!-- MODAL NOTIFICATIONS : START -->
+  <div id="modal-notifications" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Demandes de service</h4>
+
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+          <span class="title">Ben Laurier</span>
+          <p>
+            Une fondue au chocolat
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Céline Dion</span>
+          <p>
+            Un pain aux bananes
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Georges Laraq </span>
+          <p>
+            Un riz
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="https://dummyimage.com/150x150" alt="" class="circle">
+          <span class="title">Ali Awal</span>
+          <p>
+            Un plantain
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">notifications</i></a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <!-- MODAL NOTIFICATIONS : END -->
+
+  <!-- SEARCH MODAL : START -->
+  <div id="modal-search" class="modal modal-fixed-footer">
+    <div class="modal-header">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons">close</i></a>
+    </div>
+    <div class="modal-content">
+
+      <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="autocomplete-input" class="autocomplete">
+              <label for="autocomplete-input">Mot(s) clé(s)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">SEARCH</a>
+    </div>
+
+  </div>
+  <!-- SEARCH MODAL : END -->
+
+
+  <!-- firebase -->
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!--<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>-->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!--<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+  apiKey: "AIzaSyDeTPGZJmgE6pJ_IYLOOdPLaE5YlRBjUeo",
+  authDomain: "apero-68e78.firebaseapp.com",
+  databaseURL: "https://apero-68e78-default-rtdb.firebaseio.com",
+  projectId: "apero-68e78",
+  storageBucket: "apero-68e78.appspot.com",
+  messagingSenderId: "94438058503",
+  appId: "1:94438058503:web:457015fa059625ce6318a2",
+  measurementId: "G-J7CTL6B73M"
+};
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //firebase.analytics();
+  </script>
+-->
+
+
+  <!--  Scripts-->
+  <script src="js/wNumb.min.js"></script>
+  <script src="js/bundle.js"></script>
+</body>
+
+</html>

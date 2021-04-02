@@ -8,9 +8,9 @@ export default class App {
     this.M = M;
   }
 
-   displayNotification() : void {
+  displayNotification(): void {
     if (Notification.permission == 'granted') {
-      navigator.serviceWorker.getRegistration().then(function(reg: any) {
+      navigator.serviceWorker.getRegistration().then(function (reg: any) {
         var options = {
           body: 'Here is a notification body!',
           icon: 'images/example.png',
@@ -41,7 +41,7 @@ export default class App {
     publishing_form_modal_options.onOpenEnd = () => { console.log("Une fois ouvert, fait ceci! ") };
     publishing_form_modal_options.onCloseStart = () => { console.log("Avant de te fermer. Fait ceci!") };
     publishing_form_modal_options.onCloseEnd = () => { console.log("Une fois fermé, fait ceci!") };
-    
+
     this.M.Modal.init(publishing_form_modal, publishing_form_modal_options);
     var publishing_form_modal_links = document.querySelectorAll('id.modal-publishing-from .modal-footer a');
     publishing_form_modal_links.forEach((href) => {

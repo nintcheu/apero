@@ -9,11 +9,11 @@ export default class Auth {
 
     constructor(appfirebase: any, _modal: HTMLElement) {
         this.currentModal = _modal;
-        this.firebase  = appfirebase;
+        this.firebase = appfirebase;
     }
 
     init(): void {
-        
+
 
         let _profileAccessToken = window.localStorage.getItem('_profileAccessToken') || null;
         let _profileDisplayName = window.localStorage.getItem('_profileDisplayName') || null;
@@ -56,7 +56,9 @@ export default class Auth {
                         _profileAccessToken = authResult.credential.accessToken;
                         window.localStorage.setItem('_profileAccessToken', _profileAccessToken);
 
-                        //console.log(authResult.credential.accessToken);
+                        console.log("authResult", authResult);
+                        console.log("redirectUrl", redirectUrl);
+
 
                         if (authResult.user) {
 
@@ -95,10 +97,15 @@ export default class Auth {
                     // or whether we leave that to developer to handle.
                     return false;
                 },
-
+                uiShown: function () {
+                    // The widget is rendered.
+                    // Hide the loader.
+                    //document.getElementById('loader').style.display = 'none';
+                }
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
             signInFlow: 'popup',
+            signInSuccessUrl: '/',
             signInOptions: [
                 {
                     provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -110,8 +117,7 @@ export default class Auth {
                         // is available.
                         prompt: 'select_account'
                     }
-                }
-
+                },
             ],
             // Terms of service url.
             //tosUrl: '<your-tos-url>',

@@ -1,26 +1,27 @@
-export default class SW {
+export default class AppSW {
 
     pwaSupport: boolean = false;
+    notificationSC: any;
+
+
+    constructor(_notificationService: any) {
+        this.notificationSC = _notificationService;
+        this.init();
+    }
 
     init(): void {
 
         if ('serviceWorker' in navigator) {
             this.pwaSupport = true;
             //register the service worker
-            navigator.serviceWorker.register('sw.js').then( (reg) => {
+            navigator.serviceWorker.register('sw.js').then((reg) => {
 
                 // registration worked
-               console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
+               // console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
 
-               if('Notification' in window){
-                    console.log("Notification supported");
-                    Notification.requestPermission((status)=>{
-                        console.log("Notification permission status: " , status);
-                    });
-                    
-                    this.notify("Bienvenue sur la plateforme Apéro!!!");
-               } 
+                    this.notificationSC.notify("Bienvenue sur la plateforme Apéro!!!");
                 
+
             }).catch((error) => {
                 // registration failed
                 console.log('Registration failed with ' + error);
@@ -38,12 +39,9 @@ export default class SW {
         return this.pwaSupport;
     }
 
-    notify(title: string): void {
-        if(Notification.permission === 'granted'){
-            navigator.serviceWorker.ready.then((reg) => {
-                reg.showNotification(title);
-            });
-        }
-    }
+   
+
+
+
 
 }

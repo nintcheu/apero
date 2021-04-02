@@ -67,7 +67,7 @@ module.exports = {
 
     // Other plugins...
     new WorkboxPlugin.InjectManifest({
-      swSrc: './src/service/sw-define.ts',
+      swSrc: './src/service/sw-definition.ts',
       swDest: './../sw.js',
       compileSrc: true,
       additionalManifestEntries: [
@@ -77,6 +77,12 @@ module.exports = {
         'js/',
         'images/'
       ],
+    }),
+
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/service/sw-messaging-definition.ts',
+      swDest: './../firebase-messaging-sw.js',
+      compileSrc: true,
     })
   ],
 
