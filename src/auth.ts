@@ -1,15 +1,18 @@
 import * as firebaseui from './../node_modules/firebaseui';
 import firebaseauth from './../node_modules/firebase/auth';
 import firebase from './../node_modules/firebase/app';
+import AuthService from './service/authService';
+import UserDao from './dao/uerDao';
+import DeviceDao from './dao/deviceDao';
 
 export default class Auth {
 
     currentModal: HTMLElement;
     firebase: any;
 
-    constructor(appfirebase: any, _modal: HTMLElement) {
+    constructor(_f: any, _modal: HTMLElement) {
         this.currentModal = _modal;
-        this.firebase = appfirebase;
+        this.firebase = _f;
     }
 
     init(): void {
@@ -47,12 +50,29 @@ export default class Auth {
 
         // Initialize the FirebaseUI Widget using Firebase.
         let ui = new firebaseui.auth.AuthUI(this.firebase.auth());
+        console.log('this.firebase.auth(): ', this.firebase.auth());
+
+        let authService = new AuthService(this.firebase);
 
         var uiConfig = {
             callbacks: {
-                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-                    if (authResult.credential) {
+                signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+                
+                   // console.log("authResult: ", authResult);
 
+                    if (authResult.credential) {
+                        authService.setAuthResult(authResult);
+
+                        let user = authService.getUser();
+                        user.setAccessToken(authResult.credential.accessToken);
+                        let userDao = new UserDao(this.firebase, user);
+                            userDao.create();
+                        authService.getDevice().then((device) =>{
+                            let deviceDao = new DeviceDao(this.firebase, device);
+                                //deviceDao.create();
+                        }).catch();
+
+                        
                         _profileAccessToken = authResult.credential.accessToken;
                         window.localStorage.setItem('_profileAccessToken', _profileAccessToken);
 

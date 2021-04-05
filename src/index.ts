@@ -10,6 +10,7 @@ import FloatingBtnMenu from './component/floatingBtnMenu';
 import Chip from './component/chip';
 import M from './../node_modules/materialize-css';
 import firebase from './../node_modules/firebase/app';
+import './../node_modules/firebase/firestore';
 import "./../node_modules/firebase/messaging";
 
 
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         appId: "1:94438058503:web:457015fa059625ce6318a2",
         measurementId: "G-J7CTL6B73M"
     };
-
+    firebase.initializeApp(firebaseConfig);
     window.onhashchange = function () {
         console.log("onhashchange");
         //Header is fixed, need to slide down some to see sectionHead
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     floatMenuBtn.init();
     floatMenuBtn.addListener();
 
-    let auth = new Auth(firebase.initializeApp(firebaseConfig), modalElements.getCurrentModal() as HTMLElement);
+    let auth = new Auth(firebase, modalElements.getCurrentModal() as HTMLElement);
     auth.init();
     
 
@@ -112,12 +113,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
 const messaging = firebase.messaging();
 
 messaging.requestPermission().then(()=> {
-    console.log("Have permission");
+   // console.log("Have permission");
     return  messaging.getToken();
 
 }).then( (token) =>{
 
-    console.log(token);
+   // console.log("MessagingToken", token);
 
 }).catch((err)=> {
     console.log("Error Occured", err);
