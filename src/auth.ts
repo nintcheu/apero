@@ -2,17 +2,19 @@ import * as firebaseui from './../node_modules/firebaseui';
 import firebaseauth from './../node_modules/firebase/auth';
 import firebase from './../node_modules/firebase/app';
 import AuthService from './service/authService';
-import UserDao from './dao/uerDao';
-import DeviceDao from './dao/deviceDao';
+import UserDao from './model/dao/user';
+import DeviceDao from './model/dao/device';
 
 export default class Auth {
 
     currentModal: HTMLElement;
     firebase: any;
+    pwa: boolean = false;
 
-    constructor(_f: any, _modal: HTMLElement) {
+    constructor(_f: any, _pwa:boolean, _modal: HTMLElement) {
         this.currentModal = _modal;
         this.firebase = _f;
+        this.pwa = _pwa;
     }
 
     init(): void {
@@ -57,60 +59,71 @@ export default class Auth {
         var uiConfig = {
             callbacks: {
                 signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-                
-                   // console.log("authResult: ", authResult);
+                    console.log("authResult", authResult);
+                    console.log("redirectUrl", redirectUrl);
+
+                    authService.setAuthResult(authResult);
 
                     if (authResult.credential) {
-                        authService.setAuthResult(authResult);
 
                         let user = authService.getUser();
                         user.setAccessToken(authResult.credential.accessToken);
-                        let userDao = new UserDao(this.firebase, user);
-                            userDao.create();
-                        authService.getDevice().then((device) =>{
-                            let deviceDao = new DeviceDao(this.firebase, device);
-                                //deviceDao.create();
-                        }).catch();
+                        let userDao = new UserDao(this.firebase);
+                        userDao.create(user);
 
-                        
+                        if(this.pwa){
+                            
+                            authService.getDevice().then((device) => {
+
+                                if(device){
+                                    let deviceDao = new DeviceDao(this.firebase);
+                                    deviceDao.create(device);
+                                }
+                               
+                            }).catch((err) => {
+                                console.log("create device failed: ", err);
+                            });
+                        }
+
+
+
                         _profileAccessToken = authResult.credential.accessToken;
                         window.localStorage.setItem('_profileAccessToken', _profileAccessToken);
 
-                        console.log("authResult", authResult);
-                        console.log("redirectUrl", redirectUrl);
-
-
-                        if (authResult.user) {
-
-                            //console.log(authResult.user.displayName);
-                            _profileDisplayName = authResult.user.displayName;
-                            window.localStorage.setItem('_profileDisplayName', _profileDisplayName);
-
-
-                            //console.log(authResult.user.email);
-                            _profileEmail = authResult.user.email;
-                            window.localStorage.setItem('_profileEmail', _profileEmail);
-
-                            //console.log(authResult.user.photoURL);
-                            _profilePhotoUrl = authResult.user.photoURL;
-                            window.localStorage.setItem('_profilePhotoUrl', _profilePhotoUrl);
-
-                            //console.log(authResult.user.metadata.lastSignInTime);
-
-                            document.querySelector('#profileBackground').setAttribute("style", "display:block");
-                            document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
-                            document.querySelector('#profilePhoto img').setAttribute('src', window.localStorage.getItem("_profilePhotoUrl"));
-                            document.querySelector('#profileDisplayName').appendChild(document.createTextNode(window.localStorage.getItem("_profileDisplayName")));
-                            document.querySelector('#profileEmail').appendChild(document.createTextNode(window.localStorage.getItem("_profileEmail")));
-                            document.querySelector('#disconnectLink').setAttribute("style", "display:block");
-
-                            document.querySelectorAll('.granted').forEach((element) => {
-                                element.style.display = "block";
-                            });
-
-                        }
 
                     }
+
+                    if (authResult.user) {
+
+                        //console.log(authResult.user.displayName);
+                        _profileDisplayName = authResult.user.displayName;
+                        window.localStorage.setItem('_profileDisplayName', _profileDisplayName);
+
+
+                        //console.log(authResult.user.email);
+                        _profileEmail = authResult.user.email;
+                        window.localStorage.setItem('_profileEmail', _profileEmail);
+
+                        //console.log(authResult.user.photoURL);
+                        _profilePhotoUrl = authResult.user.photoURL;
+                        window.localStorage.setItem('_profilePhotoUrl', _profilePhotoUrl);
+
+                        //console.log(authResult.user.metadata.lastSignInTime);
+
+                        document.querySelector('#profileBackground').setAttribute("style", "display:block");
+                        document.querySelector('#profilePhoto img').setAttribute('style', "display:block");
+                        document.querySelector('#profilePhoto img').setAttribute('src', window.localStorage.getItem("_profilePhotoUrl"));
+                        document.querySelector('#profileDisplayName').appendChild(document.createTextNode(window.localStorage.getItem("_profileDisplayName")));
+                        document.querySelector('#profileEmail').appendChild(document.createTextNode(window.localStorage.getItem("_profileEmail")));
+                        document.querySelector('#disconnectLink').setAttribute("style", "display:block");
+
+                        document.querySelectorAll('.granted').forEach((element) => {
+                            element.style.display = "block";
+                        });
+
+                    }
+
+
 
                     // User successfully signed in.
                     // Return type determines whether we continue the redirect automatically

@@ -74,7 +74,7 @@ self.addEventListener('fetch', (evt: Event) => {
           if ((fetchRes instanceof Response) && (200 === fetchRes.status)) {
             cache.put(evt.request.url, fetchRes.clone());
           } else {
-            console.log("fetchRes: ", fetchRes);
+           // console.log("fetchRes: ", fetchRes);
           }
           // check cached items size
           limitCacheSize(dynamicCache, defaultCacheSize);

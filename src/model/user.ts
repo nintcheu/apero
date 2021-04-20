@@ -74,7 +74,7 @@ export default class User {
 
  
 
-    getModel(): Object {
+    getData(): Object {
         return {
             profilePicUrl: this.getProfilePicUrl(),
             displayName: this.getProfilePicUrl(),

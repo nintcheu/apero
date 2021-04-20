@@ -1,15 +1,13 @@
-import User from "./user";
-
 export default class Device {
     info: Object = {};
     createdAt: number = 0;
     geolocation: Object = {};
-    token: string = '';
-    uid: number | string = '';
+    fcmToken: string;
+    uid: number | string;
 
-    constructor(_token: string, _u: number| string) {
-        this.token = _token;
-        this.uid = _u;
+    constructor(_token: string, _uid?: number| string) {
+        this.fcmToken = _token || "";
+        this.uid = _uid || "";
     }
 
     getInfo(): Object {
@@ -28,7 +26,7 @@ export default class Device {
         this.geolocation = _location;
     }
 
-    setCreated(_timestamp: number) {
+    setCreatedAt(_timestamp: number) {
         this.createdAt = _timestamp;
     }
 
@@ -37,11 +35,11 @@ export default class Device {
     }
 
     getToken(){
-        return this.token;
+        return this.fcmToken;
     }
 
     setToken(_t: string){
-        this.token = _t;
+        this.fcmToken = _t;
     }
 
 
@@ -54,13 +52,15 @@ export default class Device {
     }
 
 
-    getModel(): Object {
+    getData(): Object {
         return {
-            token: this.getToken(),
-            uid: this.uid,
+            fcmToken: this.getToken(),
+            uid: this.getUId(),
             geolocation: this.getGeolocation(),
             info: this.getInfo(),
+            createdAt: this.getCreateAt()
         }
     }
+
 
 }

@@ -49,23 +49,6 @@ export default class AuthService {
         return this.getCurrentUser().uid || '';
     }
 
-    // get the device token.
-    async getCurrentDeviceToken(): Promise<string> {
-        await this.firebase.messaging().getToken().then((currentToken) => {
-            if (currentToken) {
-                console.log('Got FCM device token:', currentToken);
-                return currentToken;
-            } else {
-                return '';
-            }
-
-        }).catch((error) => {
-            console.error('Unable to get device token.', error);
-
-        });
-
-    }
-
     getUser(): User {
 
         let u: User = new User(
@@ -78,9 +61,18 @@ export default class AuthService {
         return u;
     }
 
-    async getDevice(): Promise<Device> {
-        let _deviceToken = await this.getCurrentDeviceToken();
-        return new Device(_deviceToken, this.firebase.firestore.FieldValue.serverTimestamp());
+     getDevice(): Device {
+         return this.firebase.messaging().getToken().then((fcmToken) => {
+             if (fcmToken) {
+                 console.log('Got FCM device token:', fcmToken);
+                 return new Device(fcmToken, this.getCurrentUserId());
+             }
+             return null;
+
+         }).catch((error) => {
+             console.error('Unable to get device token.', error);
+
+         });
     }
 
 

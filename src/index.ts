@@ -18,11 +18,13 @@ import App from './app';
 import NotificationCS from './notification';
 import Auth from './auth';
 import AppSW from './service/sw';
+import Device from './model/device';
+import DeviceDao from './model/dao/device';
+
 
 
 document.addEventListener('DOMContentLoaded', (e) => {
 
-    const apiKeyMessaging = "BN_nyB9Ft4EDnHjHZX4dwLrh5W1i3OhJdjNNopmY_5WxnLy7_8vi8SliXNhWT0E8RM_xDrnaBDPGlIH7_gwPyjU";
     const firebaseConfig = {
         apiKey: "AIzaSyDeTPGZJmgE6pJ_IYLOOdPLaE5YlRBjUeo",
         authDomain: "apero-68e78.firebaseapp.com",
@@ -73,15 +75,21 @@ document.addEventListener('DOMContentLoaded', (e) => {
     floatMenuBtn.init();
     floatMenuBtn.addListener();
 
-    let auth = new Auth(firebase, modalElements.getCurrentModal() as HTMLElement);
+    let aperoSW = new AppSW();
+    let isPwa = aperoSW.isPwaSupported();
+
+    let auth = new Auth(firebase, isPwa, modalElements.getCurrentModal() as HTMLElement);
     auth.init();
     
 
-    let aperoSW = new AppSW();
+    
 
     let aperoApp = new App(aperoSW.isPwaSupported(), M);
     aperoApp.init();
     aperoApp.initInstallFeature();
+
+
+
 
     const form = document.querySelector('form')!;
     //console.log("form: " + form);
@@ -104,7 +112,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
       }
 
-
 // Give the service worker access to Firebase Messaging.
 // Note that you can only use Firebase Messaging here. Other Firebase libraries
 // are not available in the service worker.
@@ -118,7 +125,15 @@ messaging.requestPermission().then(()=> {
 
 }).then( (token) =>{
 
-   // console.log("MessagingToken", token);
+    if(isPwa){
+        if(token){
+            let device = new Device(token);
+            let deviceDao = new DeviceDao(firebase);  
+            deviceDao.create(device); 
+            console.log("MessagingToken", token);
+        }
+    }
+   
 
 }).catch((err)=> {
     console.log("Error Occured", err);
